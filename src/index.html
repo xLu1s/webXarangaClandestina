@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xaranga Clandestina</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body class="bg-base-200 text-base-content">
+    <header class="navbar bg-primary text-primary-content">
+        <div class="container mx-auto flex justify-between items-center py-4">
+            <h1 class="text-2xl font-bold">Xaranga Clandestina</h1>
+            <nav>
+                <a href="#inicio" class="btn btn-ghost">Inicio</a>
+                <a href="#eventos" class="btn btn-ghost">Eventos</a>
+                <a href="#galeria" class="btn btn-ghost">Galería</a>
+                <a href="#contacto" class="btn btn-ghost">Contacto</a>
+            </nav>
+        </div>
+    </header>
+    <main class="container mx-auto py-8">
+        <section id="inicio" class="mb-8">
+            <h2 class="text-xl font-semibold mb-2">Bienvenidos</h2>
+            <p>Somos la Xaranga Clandestina, ¡la fiesta está asegurada!</p>
+        </section>
+        <section id="eventos" class="mb-8">
+            <h2 class="text-xl font-semibold mb-2">Próximos Eventos</h2>
+            <ul>
+                <li>Evento 1 - Fecha</li>
+                <li>Evento 2 - Fecha</li>
+            </ul>
+        </section>
+        <section id="galeria" class="mb-8">
+            <h2 class="text-xl font-semibold mb-2">Galería</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <!-- Aquí puedes añadir imágenes -->
+                <img src="img/ejemplo1.jpg" alt="Foto 1" class="rounded shadow">
+                <img src="img/ejemplo2.jpg" alt="Foto 2" class="rounded shadow">
+            </div>
+        </section>
+        <section id="contacto">
+            <h2 class="text-xl font-semibold mb-2">Contacto</h2>
+            <form class="space-y-4">
+                <input type="text" placeholder="Nombre" class="input input-bordered w-full" required>
+                <input type="email" placeholder="Email" class="input input-bordered w-full" required>
+                <textarea placeholder="Mensaje" class="textarea textarea-bordered w-full" required></textarea>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </section>
+    </main>
+    <footer class="footer footer-center p-4 bg-base-300 text-base-content">
+        <div>
+            <p>&copy; 2025 Xaranga Clandestina. Todos los derechos reservados.</p>
