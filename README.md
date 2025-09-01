@@ -1,44 +1,46 @@
-# Xaranga Clandestina
+# Xaranga Clandestina Website
 
-¡Bienvenido al sitio web oficial de la Xaranga Clandestina!
+Sitio web oficial de la Xaranga Clandestina d'Alcoi. Una web moderna y responsive desarrollada con HTML, TailwindCSS y DaisyUI.
 
-## Descripción
+## 🚀 Características
 
-Este proyecto es una página web para la Xaranga Clandestina, una agrupación musical festiva. El objetivo es informar sobre próximos eventos, compartir fotos y vídeos, y facilitar el contacto con la charanga.
+- Diseño completamente responsive
+- Secciones de servicios y eventos
+- Formulario de contacto integrado
+- Enlaces directos a redes sociales
+- Optimizada para SEO
 
-## Características
-
-- Información sobre la charanga y sus miembros.
-- Calendario de actuaciones y eventos.
-- Galería multimedia (fotos y vídeos).
-- Formulario de contacto para contrataciones.
-- Diseño moderno y responsivo usando [daisyUI](https://daisyui.com/).
-
-## Instalación
-
-1. Clona el repositorio:
-   ```sh
-   git clone https://github.com/tu-usuario/webXarangaClandestina.git
-   ```
-2. Instala las dependencias (si usas Node.js):
-   ```sh
-   npm install
-   ```
-
-## Uso
-
-Abre el archivo [`index.html`](index.html) en tu navegador para ver la web localmente.
-
-## Tecnologías
+## 🛠️ Tecnologías Utilizadas
 
 - HTML5
-- CSS3 ([daisyUI](https://daisyui.com/))
-- Node.js (solo para desarrollo de estilos)
+- TailwindCSS
+- DaisyUI
+- FormSubmit para el formulario de contacto
 
-## Contribuir
+## 📦 Dependencias
 
-¿Quieres mejorar la web? Haz un fork, crea una rama y envía tu pull request.
+- DaisyUI v5
+- TailwindCSS v4
 
-## Licencia
+## 🔧 Instalación y Uso
 
-Este proyecto está bajo la licencia
+1. Clona el repositorio:
+```bash
+git clone https://github.com/tuusuario/WebClandestina.git
+```
+
+2. Abre el archivo index.html en tu navegador
+
+## 📱 Redes Sociales
+
+- Instagram: [@xaranga_laclandestina](https://www.instagram.com/xaranga_laclandestina/)
+- WhatsApp: [Contacto](https://wa.me/34669739365)
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT - mira el archivo [LICENSE.md](LICENSE.md) para detalles
+
+## ✨ Autores
+
+- Luis Balaguer Senabre
+- Xaranga Clandestina d'Alcoi
