@@ -7,15 +7,40 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Xaranga Clandestina</title>
 </head>
+
 <body data-theme="dark" class="bg-base-200 text-base-content">
     <header class="navbar bg-base-100 shadow-sm">
-        <div class="container mx-auto flex justify-between items-center py-4">
-            <h1 class="text-2xl font-bold">Xaranga Clandestina</h1>
-            <nav>
+        <div class="container mx-auto px-4">
+            <!-- Logo y título -->
+            <div class="flex-1">
+                <div class="flex items-center gap-3">
+                    <img src="./assets/img/logo-sin-fondo.png" alt="Logo" class="h-10 w-10 rounded-full" />
+                    <h1 class="text-xl md:text-2xl font-bold">Xaranga Clandestina</h1>
+                </div>
+            </div>
+            
+            <!-- Menú hamburguesa para móvil -->
+            <div class="flex-none lg:hidden">
+                <button class="btn btn-square btn-ghost">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 stroke-current">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Menú de navegación -->
+            <nav class="hidden lg:flex lg:items-center lg:gap-4">
                 <a href="#inicio" class="btn btn-ghost">Inicio</a>
                 <a href="#eventos" class="btn btn-ghost">Eventos</a>
                 <a href="#contacto" class="btn btn-ghost">Contacto</a>
             </nav>
+        </div>
+
+        <!-- Menú móvil desplegable -->
+        <div class="dropdown-content menu bg-base-100 w-full absolute top-16 left-0 hidden">
+            <a href="#inicio" class="btn btn-ghost w-full justify-start rounded-none">Inicio</a>
+            <a href="#eventos" class="btn btn-ghost w-full justify-start rounded-none">Eventos</a>
+            <a href="#contacto" class="btn btn-ghost w-full justify-start rounded-none">Contacto</a>
         </div>
     </header>
     <main class="container mx-auto py-4">
@@ -144,13 +169,13 @@
 
     <footer class="footer sm:footer-horizontal bg-neutral text-neutral-content p-10">
   <aside class="flex items-center gap-4">
-    <img src="./assetsmg/logo-sin-fondo.png" alt="Logo" class="w-24" />
+    <img src="./assets/img/logo-sin-fondo.png" alt="Logo" class="w-24" />
     <p class="text-left">
         Xaranga La Clandestina d'Alcoi
         <br />
         Cualquier evento musical con garantía de éxito.
     </p>
-</aside>
+    </aside>
     <nav>
         <h6 class="footer-title">Puedes contactar con nosotros</h6>
         <div class="grid grid-flow-col gap-4">
@@ -167,3 +192,25 @@
         </div>
     </nav>
 </footer>
+
+<script>
+    // Manejo del menú móvil
+    document.querySelector('.btn-square').addEventListener('click', function() {
+        const dropdownContent = document.querySelector('.dropdown-content');
+        dropdownContent.classList.toggle('hidden');
+    });
+
+    // Cerrar menú al hacer click en un enlace
+    document.querySelectorAll('.dropdown-content a').forEach(link => {
+        link.addEventListener('click', function() {
+            document.querySelector('.dropdown-content').classList.add('hidden');
+        });
+    });
+
+    // Cerrar menú al hacer scroll
+    window.addEventListener('scroll', function() {
+        document.querySelector('.dropdown-content').classList.add('hidden');
+    });
+</script>
+</body>
+</html>
