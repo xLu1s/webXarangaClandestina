@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+User-agent: Googlebot-Image
+Allow: /
+
 Sitemap: https://www.xarangaclandestina.es/sitemap-index.xml
+Sitemap: https://www.xarangaclandestina.es/sitemap-images.xml

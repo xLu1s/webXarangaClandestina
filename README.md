@@ -16,6 +16,8 @@ Landing bilingüe de la charanga La Clandestina, construida con Astro y Tailwind
 - `src/data/content.ts`: todos los textos en castellano y valenciano.
 - `src/data/site.ts`: dominio, teléfono, zona de actuación y redes sociales.
 - `src/data/media.ts`: rutas y textos alternativos de todas las fotos y vídeos.
+- `src/images/logo.webp`: logo original editable.
+- `public/logo.webp`: versión pública utilizada por Google y datos estructurados.
 - `/`: versión en castellano.
 - `/va/`: versión en valenciano.
 
@@ -46,6 +48,7 @@ El teléfono está centralizado como `34663401455` en `src/data/site.ts`. El for
 ## SEO
 
 - `public/robots.txt` permite rastreo y apunta al sitemap.
+- `public/sitemap-images.xml` declara el logo y la imagen social para Google Imágenes.
 - `@astrojs/sitemap` incluye automáticamente `/` y `/va/` al compilar.
 - Cada idioma tiene título, descripción, canonical, `hreflang` y locale Open Graph propios.
 - `src/layouts/Layout.astro` genera datos estructurados `MusicGroup` sin testimonios ni cifras ficticias.

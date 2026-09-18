@@ -10,20 +10,48 @@ const canonical = new URL(localePath(locale), siteConfig.url).href;
 const alternateLocale: Locale = locale === 'es' ? 'va' : 'es';
 const alternate = new URL(localePath(alternateLocale), siteConfig.url).href;
 const ogImage = new URL('/og-default.webp', siteConfig.url).href;
+const logoUrl = new URL('/logo.webp', siteConfig.url).href;
 
-const jsonLd = {
+const jsonLdMusicGroup = {
   '@context': 'https://schema.org',
   '@type': 'MusicGroup',
+  '@id': `${siteConfig.url}/#organization`,
   name: siteConfig.legalName,
+  alternateName: ['La Clandestina Alcoi', 'Xaranga La Clandestina'],
   url: canonical,
   description: copy.seo.description,
   telephone: siteConfig.phone.display,
   areaServed: siteConfig.areaServed,
-  image: ogImage,
+  logo: {
+    '@type': 'ImageObject',
+    url: logoUrl,
+    contentUrl: logoUrl,
+    width: 1254,
+    height: 1254,
+    caption: 'Logo de la Charanga La Clandestina de Alcoi',
+  },
+  image: [logoUrl, ogImage],
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Alcoi',
+    addressRegion: 'Alacant',
+    addressCountry: 'ES',
+  },
   sameAs: Object.values(siteConfig.social).filter(Boolean),
   knowsAbout: locale === 'va'
     ? ['Moros i Cristians', 'Xaranga per a bodes', 'Xaranga per a festes']
     : ['Moros y Cristianos', 'Charanga para bodas', 'Charanga para fiestas'],
+};
+
+const jsonLdWebSite = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${siteConfig.url}/#website`,
+  url: siteConfig.url,
+  name: siteConfig.legalName,
+  alternateName: 'La Clandestina Alcoi',
+  publisher: { '@id': `${siteConfig.url}/#organization` },
+  inLanguage: copy.lang,
 };
 ---
 
@@ -40,7 +68,9 @@ const jsonLd = {
     <link rel="alternate" hreflang="es" href={locale === 'es' ? canonical : alternate} />
     <link rel="alternate" hreflang="ca-valencia" href={locale === 'va' ? canonical : alternate} />
     <link rel="alternate" hreflang="x-default" href={new URL('/', siteConfig.url).href} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="image_src" href={logoUrl} />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={siteConfig.legalName} />
@@ -68,7 +98,8 @@ const jsonLd = {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLdMusicGroup)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLdWebSite)} />
   </head>
   <body>
     <slot />

@@ -23,8 +23,8 @@ export const content = {
   es: {
     lang: 'es', locale: 'es_ES', path: '/', alternatePath: '/va/', languageName: 'Castellano',
     seo: {
-      title: 'Charanga La Clandestina | Moros y Cristianos y eventos',
-      description: 'Charanga especializada en Moros y Cristianos, bodas, despedidas, Fallas, Hogueras y eventos privados. Pide presupuesto por WhatsApp.',
+      title: 'La Clandestina Alcoi | Charanga para fiestas y eventos',
+      description: 'Charanga La Clandestina de Alcoy, especializada en Moros y Cristianos, bodas, despedidas, Fallas, Hogueras y eventos privados. Presupuesto por WhatsApp.',
     },
     nav: { start: 'Inicio', specialty: 'Especialidad', events: 'Eventos', gallery: 'En acción', contact: 'Contacto', budget: 'Pedir presupuesto', open: 'Abrir menú', close: 'Cerrar menú' },
     hero: {
@@ -72,8 +72,8 @@ export const content = {
   va: {
     lang: 'ca', locale: 'ca_ES', path: '/va/', alternatePath: '/', languageName: 'Valencià',
     seo: {
-      title: 'Xaranga La Clandestina | Moros i Cristians i esdeveniments',
-      description: 'Xaranga especialitzada en Moros i Cristians, bodes, comiats, Falles, Fogueres i esdeveniments privats. Demana pressupost per WhatsApp.',
+      title: 'La Clandestina Alcoi | Xaranga per a festes i esdeveniments',
+      description: 'Xaranga La Clandestina d’Alcoi, especialitzada en Moros i Cristians, bodes, comiats, Falles, Fogueres i esdeveniments privats. Pressupost per WhatsApp.',
     },
     nav: { start: 'Inici', specialty: 'Especialitat', events: 'Esdeveniments', gallery: 'En acció', contact: 'Contacte', budget: 'Demanar pressupost', open: 'Obrir menú', close: 'Tancar menú' },
     hero: {

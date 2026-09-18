@@ -47,6 +47,7 @@ button { color: inherit; }
 .nav-island { display: flex; width: min(100%, 1240px); min-height: 70px; align-items: center; justify-content: space-between; gap: 28px; margin: 0 auto; border: 1px solid rgba(17,24,39,.12); border-radius: 18px; background: rgba(255,253,247,.9); padding: 9px 10px 9px 18px; box-shadow: 0 10px 35px rgba(17,24,39,.08); backdrop-filter: blur(18px); transition: border-radius .25s, background .25s, box-shadow .25s; }
 .is-scrolled .nav-island { box-shadow: 0 12px 38px rgba(17,24,39,.14); }
 .brand { display: flex; align-items: center; gap: 11px; font-family: var(--display); font-weight: 800; letter-spacing: -.04em; }
+.brand-logo { width: 48px; height: 48px; flex: 0 0 auto; border: 1px solid rgba(17,24,39,.12); border-radius: 50%; background: var(--white); object-fit: contain; }
 .brand-mark { position: relative; display: flex; width: 34px; height: 34px; align-items: flex-end; justify-content: center; gap: 3px; overflow: hidden; border-radius: 50%; background: var(--cyan); padding-bottom: 8px; }
 .brand-mark i { display: block; width: 4px; background: var(--ink); transform: rotate(-10deg); }
 .brand-mark i:nth-child(1) { height: 11px; }.brand-mark i:nth-child(2) { height: 18px; }.brand-mark i:nth-child(3) { height: 14px; }
@@ -250,7 +251,7 @@ button { color: inherit; }
   .display-title { font-size: clamp(2.7rem, 13vw, 4.7rem); }
   .site-header { top: 10px; padding-inline: 10px; }
   .nav-island { min-height: 62px; border-radius: 14px; padding-left: 13px; }
-  .brand { font-size: .92rem; }.brand-mark { width: 31px; height: 31px; }
+  .brand { font-size: .92rem; }.brand-logo { width: 42px; height: 42px; }.brand-mark { width: 31px; height: 31px; }
   .language-switch a { padding: 6px; }
   .mobile-menu { inset: -10px -10px auto; }
   .hero { min-height: 0; padding-top: 130px; padding-bottom: 90px; }

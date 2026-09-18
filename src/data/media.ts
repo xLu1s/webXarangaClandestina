@@ -15,6 +15,7 @@ import despedidaPoster from '../images/DespedidaPoster.webp?url';
 
 // Replace these imports or edit paths here to update the featured media.
 export const media = {
+  logo: '/logo.webp',
   hero: { image: fotoHero },
   specialty: morosYCristianos,
   gallery: [

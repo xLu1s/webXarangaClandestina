@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.xarangaclandestina.es/</loc>
+    <image:image>
+      <image:loc>https://www.xarangaclandestina.es/logo.webp</image:loc>
+      <image:title>Logo de la Charanga La Clandestina de Alcoi</image:title>
+      <image:caption>La Clandestina, xaranga y charanga musical de Alcoy especializada en Moros y Cristianos y eventos.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xarangaclandestina.es/og-default.webp</image:loc>
+      <image:title>Charanga La Clandestina de Alcoy</image:title>
+    </image:image>
+  </url>
+</urlset>

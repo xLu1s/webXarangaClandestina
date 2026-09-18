@@ -1,6 +1,7 @@
 ---
 import type { SiteContent } from '../data/content';
 import { siteConfig, whatsappUrl, type Locale } from '../data/site';
+import { media } from '../data/media';
 
 interface Props { copy: SiteContent; locale: Locale; }
 const { copy, locale } = Astro.props;
@@ -16,7 +17,7 @@ const greeting = locale === 'va' ? 'Hola! Vull demanar informació sobre La Clan
 <header class="site-header" id="site-header">
   <nav class="nav-island" aria-label={locale === 'va' ? 'Navegació principal' : 'Navegación principal'}>
     <a href="#inicio" class="brand" aria-label={`${siteConfig.name} · ${copy.nav.start}`}>
-      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <img class="brand-logo" src={media.logo} alt="Logo de la Charanga La Clandestina de Alcoi" width="1254" height="1254" fetchpriority="high" />
       <span>{siteConfig.name}</span>
     </a>
 
