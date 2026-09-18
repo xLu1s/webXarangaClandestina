@@ -1,0 +1,25 @@
+---
+import type { SiteContent } from '../data/content';
+import { siteConfig, type Locale } from '../data/site';
+interface Props { copy: SiteContent; locale: Locale; }
+const { copy, locale } = Astro.props;
+const year = new Date().getFullYear();
+const socialLinks = Object.entries(siteConfig.social).filter(([, url]) => Boolean(url));
+---
+
+<footer class="footer">
+  <div class="shell">
+    <div class="footer-top">
+      <a href="#inicio" class="footer-brand">La<br />Clandestina<span>®</span></a>
+      <p>{copy.footer.line}</p>
+      <a href="#inicio" class="back-top">{copy.footer.back} ↑</a>
+    </div>
+    <div class="footer-grid">
+      <div><h2>{copy.footer.nav}</h2><a href="#especialidad">{copy.nav.specialty}</a><a href="#eventos">{copy.nav.events}</a><a href="#galeria">{copy.nav.gallery}</a></div>
+      <div><h2>{copy.footer.contact}</h2><a href={`tel:+${siteConfig.phone.raw}`}>{siteConfig.phone.display}</a><a href="#contacto">{copy.nav.budget}</a></div>
+      <div><h2>{copy.footer.language}</h2><a href="/" aria-current={locale === 'es' ? 'page' : undefined}>Castellano</a><a href="/va/" aria-current={locale === 'va' ? 'page' : undefined}>Valencià</a></div>
+      {socialLinks.length > 0 && <div><h2>Social</h2>{socialLinks.map(([name, url]) => <a href={url} target="_blank" rel="noopener noreferrer">{name}</a>)}</div>}
+    </div>
+    <div class="footer-bottom"><span>© {year} {siteConfig.legalName}. {copy.footer.rights}</span><span>ES · VA</span></div>
+  </div>
+</footer>

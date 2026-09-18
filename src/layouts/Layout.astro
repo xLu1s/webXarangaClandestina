@@ -1,0 +1,76 @@
+---
+import '../styles/global.css';
+import { content } from '../data/content';
+import { localePath, siteConfig, type Locale } from '../data/site';
+
+interface Props { locale?: Locale; }
+const { locale = 'es' } = Astro.props;
+const copy = content[locale];
+const canonical = new URL(localePath(locale), siteConfig.url).href;
+const alternateLocale: Locale = locale === 'es' ? 'va' : 'es';
+const alternate = new URL(localePath(alternateLocale), siteConfig.url).href;
+const ogImage = new URL('/og-default.webp', siteConfig.url).href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MusicGroup',
+  name: siteConfig.legalName,
+  url: canonical,
+  description: copy.seo.description,
+  telephone: siteConfig.phone.display,
+  areaServed: siteConfig.areaServed,
+  image: ogImage,
+  sameAs: Object.values(siteConfig.social).filter(Boolean),
+  knowsAbout: locale === 'va'
+    ? ['Moros i Cristians', 'Xaranga per a bodes', 'Xaranga per a festes']
+    : ['Moros y Cristianos', 'Charanga para bodas', 'Charanga para fiestas'],
+};
+---
+
+<!doctype html>
+<html lang={copy.lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{copy.seo.title}</title>
+    <meta name="description" content={copy.seo.description} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#00C2CB" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="es" href={locale === 'es' ? canonical : alternate} />
+    <link rel="alternate" hreflang="ca-valencia" href={locale === 'va' ? canonical : alternate} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/', siteConfig.url).href} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteConfig.legalName} />
+    <meta property="og:locale" content={copy.locale} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={copy.seo.title} />
+    <meta property="og:description" content={copy.seo.description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={siteConfig.legalName} />
+    <meta property="og:locale:alternate" content={content[alternateLocale].locale} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Existing production analytics property. -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-S15P5X5WN5"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S15P5X5WN5');
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

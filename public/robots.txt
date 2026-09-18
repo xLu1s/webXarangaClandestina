@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.xarangaclandestina.es/sitemap-index.xml

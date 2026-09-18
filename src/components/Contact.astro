@@ -1,0 +1,81 @@
+---
+import type { SiteContent } from '../data/content';
+import { siteConfig, whatsappUrl } from '../data/site';
+interface Props { copy: SiteContent; }
+const { copy } = Astro.props;
+const directMessage = `${copy.contact.request} ${copy.contact.noDate}.`;
+---
+
+<section id="contacto" class="contact section-pad">
+  <div class="contact-burst" aria-hidden="true">✦</div>
+  <div class="shell contact-grid">
+    <div class="contact-intro">
+      <p class="eyebrow"><span></span>{copy.contact.eyebrow}</p>
+      <h2 class="display-title">{copy.contact.title}</h2>
+      <p>{copy.contact.text}</p>
+      <div class="direct-contact">
+        <span>{copy.contact.direct}</span>
+        <a href={whatsappUrl(directMessage)} target="_blank" rel="noopener noreferrer">{copy.contact.directCta} ↗</a>
+        <strong>{siteConfig.phone.display}</strong>
+      </div>
+    </div>
+
+    <form class="quote-form" id="quote-form" data-phone={siteConfig.phone.raw}>
+      <div class="field field-full">
+        <label for="name">{copy.contact.name} *</label>
+        <input id="name" name="name" type="text" autocomplete="name" placeholder={copy.contact.namePlaceholder} required />
+      </div>
+      <div class="field">
+        <label for="date">{copy.contact.date} *</label>
+        <input id="date" name="date" type="date" required />
+      </div>
+      <div class="field">
+        <label for="location">{copy.contact.location} *</label>
+        <input id="location" name="location" type="text" placeholder={copy.contact.locationPlaceholder} required />
+      </div>
+      <div class="field">
+        <label for="event-type">{copy.contact.event} *</label>
+        <select id="event-type" name="event" required>
+          <option value="" selected disabled>{copy.contact.choose}</option>
+          {copy.contact.eventTypes.map((event) => <option value={event}>{event}</option>)}
+        </select>
+      </div>
+      <div class="field">
+        <label for="duration">{copy.contact.duration}</label>
+        <input id="duration" name="duration" type="text" placeholder={copy.contact.durationPlaceholder} />
+      </div>
+      <div class="field field-full">
+        <label for="message">{copy.contact.message}</label>
+        <textarea id="message" name="message" rows="4" placeholder={copy.contact.messagePlaceholder}></textarea>
+      </div>
+      <div class="field-full form-footer">
+        <p>{copy.contact.privacy}</p>
+        <button class="button button-dark" type="submit">{copy.contact.submit}<span aria-hidden="true">↗</span></button>
+      </div>
+      <input type="hidden" name="greeting" value={copy.contact.greeting} />
+      <input type="hidden" name="request" value={copy.contact.request} />
+      <input type="hidden" name="no-duration" value={copy.contact.noDuration} />
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('#quote-form');
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    const data = new FormData(form);
+    const value = (name: string) => String(data.get(name) ?? '').trim();
+    const lines = [
+      `${value('greeting')} ${value('name')}.`,
+      value('request'),
+      '',
+      `📅 ${value('date')}`,
+      `📍 ${value('location')}`,
+      `🎉 ${value('event')}`,
+      `⏱️ ${value('duration') || value('no-duration')}`,
+    ];
+    if (value('message')) lines.push('', `📝 ${value('message')}`);
+    window.open(`https://wa.me/${form.dataset.phone}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank', 'noopener,noreferrer');
+  });
+</script>

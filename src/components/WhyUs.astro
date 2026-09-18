@@ -1,0 +1,21 @@
+---
+import type { SiteContent } from '../data/content';
+interface Props { copy: SiteContent; }
+const { copy } = Astro.props;
+---
+
+<section class="trust section-pad">
+  <div class="shell">
+    <p class="eyebrow"><span></span>{copy.trust.eyebrow}</p>
+    <h2 class="display-title trust-title">{copy.trust.title}</h2>
+    <div class="trust-grid">
+      {copy.trust.items.map((item, index) => (
+        <article>
+          <span>0{index + 1}</span>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

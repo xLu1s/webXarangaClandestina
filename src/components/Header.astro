@@ -1,0 +1,69 @@
+---
+import type { SiteContent } from '../data/content';
+import { siteConfig, whatsappUrl, type Locale } from '../data/site';
+
+interface Props { copy: SiteContent; locale: Locale; }
+const { copy, locale } = Astro.props;
+const nav = [
+  { label: copy.nav.specialty, href: '#especialidad' },
+  { label: copy.nav.events, href: '#eventos' },
+  { label: copy.nav.gallery, href: '#galeria' },
+  { label: copy.nav.contact, href: '#contacto' },
+];
+const greeting = locale === 'va' ? 'Hola! Vull demanar informació sobre La Clandestina.' : '¡Hola! Quiero pedir información sobre La Clandestina.';
+---
+
+<header class="site-header" id="site-header">
+  <nav class="nav-island" aria-label={locale === 'va' ? 'Navegació principal' : 'Navegación principal'}>
+    <a href="#inicio" class="brand" aria-label={`${siteConfig.name} · ${copy.nav.start}`}>
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>{siteConfig.name}</span>
+    </a>
+
+    <ul class="desktop-nav" role="list">
+      {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+    </ul>
+
+    <div class="nav-actions">
+      <div class="language-switch" aria-label={copy.footer.language}>
+        <a href="/" lang="es" aria-current={locale === 'es' ? 'page' : undefined}>ES</a>
+        <a href="/va/" lang="ca-valencia" aria-current={locale === 'va' ? 'page' : undefined}>VA</a>
+      </div>
+      <a class="nav-cta" href={whatsappUrl(greeting)} target="_blank" rel="noopener noreferrer">{copy.nav.budget}</a>
+      <button class="menu-toggle" id="menu-toggle" aria-label={copy.nav.open} aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu-inner">
+      <p>La Clandestina</p>
+      <ul role="list">
+        {nav.map((item, index) => <li><span>0{index + 1}</span><a href={item.href}>{item.label}</a></li>)}
+      </ul>
+      <a class="button button-dark" href={whatsappUrl(greeting)} target="_blank" rel="noopener noreferrer">{copy.nav.budget}</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>('#site-header');
+  const toggle = document.querySelector<HTMLButtonElement>('#menu-toggle');
+  const menu = document.querySelector<HTMLElement>('#mobile-menu');
+  const closeMenu = () => {
+    header?.classList.remove('menu-open');
+    toggle?.setAttribute('aria-expanded', 'false');
+    menu?.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('no-scroll');
+  };
+  toggle?.addEventListener('click', () => {
+    const open = !header?.classList.contains('menu-open');
+    header?.classList.toggle('menu-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    menu?.setAttribute('aria-hidden', String(!open));
+    document.body.classList.toggle('no-scroll', open);
+  });
+  menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+  window.addEventListener('scroll', () => header?.classList.toggle('is-scrolled', window.scrollY > 24), { passive: true });
+</script>

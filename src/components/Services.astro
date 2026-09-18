@@ -1,0 +1,24 @@
+---
+import type { SiteContent } from '../data/content';
+interface Props { copy: SiteContent; }
+const { copy } = Astro.props;
+---
+
+<section id="eventos" class="events section-pad">
+  <div class="shell">
+    <div class="section-heading split-heading">
+      <div><p class="eyebrow"><span></span>{copy.eventsIntro.eyebrow}</p><h2 class="display-title">{copy.eventsIntro.title}</h2></div>
+      <p>{copy.eventsIntro.text}</p>
+    </div>
+    <div class="event-list">
+      {copy.events.map((event) => (
+        <article class={`event-row event-${event.color}`}>
+          <span class="event-number">{event.number}</span>
+          <div><p>{event.short}</p><h3>{event.name}</h3></div>
+          <p class="event-description">{event.text}</p>
+          <span class="event-arrow" aria-hidden="true">↗</span>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

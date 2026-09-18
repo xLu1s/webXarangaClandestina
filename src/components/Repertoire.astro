@@ -1,0 +1,21 @@
+---
+import type { SiteContent } from '../data/content';
+interface Props { copy: SiteContent; }
+const { copy } = Astro.props;
+---
+
+<section class="sound section-pad">
+  <div class="sound-orbit sound-orbit-one" aria-hidden="true"></div>
+  <div class="sound-orbit sound-orbit-two" aria-hidden="true"></div>
+  <div class="shell sound-grid">
+    <div>
+      <p class="eyebrow eyebrow-light"><span></span>{copy.sound.eyebrow}</p>
+      <h2 class="display-title">{copy.sound.title}</h2>
+    </div>
+    <div class="sound-copy">
+      <p>{copy.sound.text}</p>
+      <div class="sound-tags">{copy.sound.tags.map((tag, index) => <span class={`tag-${index + 1}`}>{tag}</span>)}</div>
+      <a href="#contacto" class="text-link text-link-light">{copy.sound.cta}<span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>

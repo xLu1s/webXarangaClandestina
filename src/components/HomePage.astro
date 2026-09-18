@@ -1,0 +1,36 @@
+---
+import type { Locale } from '../data/site';
+import { content } from '../data/content';
+import Layout from '../layouts/Layout.astro';
+import Header from './Header.astro';
+import Hero from './Hero.astro';
+import About from './About.astro';
+import Specialty from './Specialty.astro';
+import Services from './Services.astro';
+import Repertoire from './Repertoire.astro';
+import Gallery from './Gallery.astro';
+import WhyUs from './WhyUs.astro';
+import Contact from './Contact.astro';
+import Footer from './Footer.astro';
+import WhatsAppButton from './WhatsAppButton.astro';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const copy = content[locale];
+---
+
+<Layout locale={locale}>
+  <Header copy={copy} locale={locale} />
+  <main>
+    <Hero copy={copy} />
+    <About copy={copy} />
+    <Specialty copy={copy} />
+    <Services copy={copy} />
+    <Repertoire copy={copy} />
+    <Gallery copy={copy} locale={locale} />
+    <WhyUs copy={copy} />
+    <Contact copy={copy} />
+  </main>
+  <Footer copy={copy} locale={locale} />
+  <WhatsAppButton copy={copy} />
+</Layout>

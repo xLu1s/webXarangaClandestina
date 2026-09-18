@@ -1,0 +1,25 @@
+---
+import type { SiteContent } from '../data/content';
+import { media } from '../data/media';
+interface Props { copy: SiteContent; }
+const { copy } = Astro.props;
+---
+
+<section id="especialidad" class="specialty section-pad">
+  <div class="shell specialty-grid">
+    <div class="specialty-photo">
+      <img src={media.specialty} alt={copy.specialty.photoAlt} loading="lazy" width="1200" height="900" />
+      <span class="photo-label">M&C</span>
+      <span class="photo-star" aria-hidden="true">✦</span>
+    </div>
+    <div class="specialty-copy">
+      <p class="eyebrow eyebrow-light"><span></span>{copy.specialty.eyebrow}</p>
+      <h2 class="display-title">{copy.specialty.title}</h2>
+      <p>{copy.specialty.text}</p>
+      <ul role="list">
+        {copy.specialty.points.map((point, index) => <li><span>0{index + 1}</span>{point}</li>)}
+      </ul>
+      <a href="#contacto" class="button button-yellow">{copy.specialty.cta}<span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
