@@ -18,7 +18,7 @@ const altFor = (item: typeof media.gallery[number]) => locale === 'va' ? item.al
       {media.gallery.map((item, index) => (
         <button class="action-video gallery-trigger" data-type={item.type} data-src={item.src} data-alt={altFor(item)} aria-label={altFor(item)}>
           <span class="action-video-media">
-            <img src={item.poster} alt={altFor(item)} loading="lazy" width="720" height="1280" />
+            <img src={item.poster} alt={altFor(item)} loading="lazy" width={item.width} height={item.height} />
             <span class="tile-play" aria-hidden="true">▶</span>
             <span class="tile-index">0{index + 1}</span>
           </span>
@@ -55,13 +55,15 @@ const altFor = (item: typeof media.gallery[number]) => locale === 'va' ? item.al
       const alt = trigger.dataset.alt ?? '';
       const element = trigger.dataset.type === 'video' ? document.createElement('video') : document.createElement('img');
       if (element instanceof HTMLVideoElement) {
+        element.preload = 'none';
         element.controls = true;
-        element.autoplay = true;
         element.playsInline = true;
+        element.src = source;
+        element.autoplay = true;
       } else {
         element.alt = alt;
+        element.src = source;
       }
-      element.src = source;
       lightboxContent.replaceChildren(element);
       lightbox.setAttribute('aria-hidden', 'false');
       document.body.classList.add('no-scroll');

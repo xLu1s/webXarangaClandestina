@@ -1,20 +1,22 @@
 ---
 import type { SiteContent } from '../data/content';
-interface Props { copy: SiteContent; }
-const { copy } = Astro.props;
+import { localizedPath } from '../data/routes';
+import type { Locale } from '../data/site';
+interface Props { copy: SiteContent; locale: Locale; }
+const { copy, locale } = Astro.props;
 ---
 
 <section id="eventos" class="events section-pad">
   <div class="shell">
     <div class="section-heading split-heading">
       <div><p class="eyebrow"><span></span>{copy.eventsIntro.eyebrow}</p><h2 class="display-title">{copy.eventsIntro.title}</h2></div>
-      <p>{copy.eventsIntro.text}</p>
+      <p>{copy.eventsIntro.text} <a class="text-link" href={localizedPath('zone', locale)}>{copy.eventsIntro.zoneLink}<span aria-hidden="true">↗</span></a></p>
     </div>
     <div class="event-list">
       {copy.events.map((event) => (
         <article class={`event-row event-${event.color}`}>
           <span class="event-number">{event.number}</span>
-          <div><p>{event.short}</p><h3>{event.name}</h3></div>
+          <div><p>{event.short}</p><h3>{'href' in event && event.href ? <a href={event.href}>{event.name}</a> : event.name}</h3></div>
           <p class="event-description">{event.text}</p>
           <span class="event-arrow" aria-hidden="true">↗</span>
         </article>

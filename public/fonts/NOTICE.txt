@@ -1,0 +1,8 @@
+Bricolage Grotesque
+Copyright 2022 The Bricolage Grotesque Project Authors (https://github.com/atelier-anchor/typefaces)
+
+DM Sans
+Copyright 2014-2021 The DM Sans Project Authors (https://github.com/googlefonts/dm-fonts)
+
+Both families are licensed under the SIL Open Font License, Version 1.1.
+https://openfontlicense.org

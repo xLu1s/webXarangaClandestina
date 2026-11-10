@@ -2,7 +2,7 @@ import type { Locale } from './site';
 
 const sharedEvents = {
   es: [
-    { number: '01', name: 'Moros y Cristianos', short: 'Nuestra especialidad', text: 'Entradas, pasacalles, dianas y jornadas de convivencia con repertorio festero y energía hasta el último compás.', color: 'cyan' },
+    { number: '01', name: 'Moros y Cristianos', short: 'Nuestra especialidad', text: 'Entradas, pasacalles, dianas y jornadas de convivencia con repertorio festero y energía hasta el último compás.', color: 'cyan', href: '/moros-y-cristianos/' },
     { number: '02', name: 'Despedidas', short: 'La sorpresa que nadie olvida', text: 'Apariciones sorpresa, pasacalles y canciones para convertir el plan del grupo en una historia que contar.', color: 'pink' },
     { number: '03', name: 'Bodas', short: 'Del cóctel al baile', text: 'Recibimiento, cóctel, entrada o fiesta. Diseñamos el momento para que invitados de todas las edades entren en acción.', color: 'yellow' },
     { number: '04', name: 'Fallas', short: 'Música entre pólvora y calle', text: 'Pasacalles, despertàs y ambiente de casal con una formación que entiende el ritmo y los tiempos de la fiesta.', color: 'coral' },
@@ -10,7 +10,7 @@ const sharedEvents = {
     { number: '06', name: 'Eventos privados', short: 'Tu celebración, a tu manera', text: 'Cumpleaños, empresas, asociaciones y cualquier buena excusa. Adaptamos duración, recorrido y repertorio.', color: 'pink' },
   ],
   va: [
-    { number: '01', name: 'Moros i Cristians', short: 'La nostra especialitat', text: 'Entrades, passacarrers, dianes i jornades de convivència amb repertori fester i energia fins a l’últim compàs.', color: 'cyan' },
+    { number: '01', name: 'Moros i Cristians', short: 'La nostra especialitat', text: 'Entrades, passacarrers, dianes i jornades de convivència amb repertori fester i energia fins a l’últim compàs.', color: 'cyan', href: '/va/moros-i-cristians/' },
     { number: '02', name: 'Comiats', short: 'La sorpresa que ningú oblida', text: 'Aparicions sorpresa, passacarrers i cançons per a convertir el pla del grup en una història que contar.', color: 'pink' },
     { number: '03', name: 'Bodes', short: 'Del còctel al ball', text: 'Rebuda, còctel, entrada o festa. Dissenyem el moment perquè convidats de totes les edats entren en acció.', color: 'yellow' },
     { number: '04', name: 'Falles', short: 'Música entre pólvora i carrer', text: 'Passacarrers, despertades i ambient de casal amb una formació que entén el ritme i els temps de la festa.', color: 'coral' },
@@ -23,20 +23,21 @@ export const content = {
   es: {
     lang: 'es', locale: 'es_ES', path: '/', alternatePath: '/va/', languageName: 'Castellano',
     seo: {
-      title: 'La Clandestina Alcoi | Charanga para fiestas y eventos',
-      description: 'Charanga La Clandestina de Alcoy, especializada en Moros y Cristianos, bodas, despedidas, Fallas, Hogueras y eventos privados. Presupuesto por WhatsApp.',
+      title: 'Xaranga en Alcoy | Moros y Cristianos · Alicante y Valencia',
+      description: 'La Clandestina es la xaranga y charanga de Alcoy (Alcoi). Especialidad en Moros y Cristianos y música de calle en las provincias de Alicante y Valencia. Web informativa.',
+      keywords: ['xaranga Alcoy', 'charanga Alcoy', 'xaranga en Alcoi', 'moros y cristianos Alcoy', 'charanga Alicante', 'charanga Valencia'],
     },
-    nav: { start: 'Inicio', specialty: 'Especialidad', events: 'Eventos', gallery: 'En acción', contact: 'Contacto', budget: 'Pedir presupuesto', open: 'Abrir menú', close: 'Cerrar menú' },
+    nav: { start: 'Inicio', specialty: 'Especialidad', moros: 'Moros y Cristianos', zone: 'Alicante y Valencia', events: 'Eventos', gallery: 'En acción', contact: 'Contacto', budget: 'Pedir presupuesto', open: 'Abrir menú', close: 'Cerrar menú' },
     hero: {
-      eyebrow: 'Charanga en directo · Comunitat Valenciana',
-      titleStart: 'Donde aparece', titleAccent: 'La Clandestina,', titleEnd: 'empieza la fiesta.',
-      text: 'Música en la calle, conexión con la gente y una energía que no se ensaya. Especialistas en Moros y Cristianos y preparados para cualquier celebración.',
+      eyebrow: 'Xaranga de Alcoy · Moros y Cristianos',
+      titleStart: 'Xaranga y charanga en Alcoy.', titleAccent: 'Moros y Cristianos', titleEnd: 'en Alicante y Valencia.',
+      text: 'La Clandestina sale de Alcoy (Alcoi): música en la calle, conexión con la gente y una energía que no se ensaya. La especialidad son los Moros y Cristianos, en las provincias de Alicante y Valencia.',
       cta: 'Cuéntanos tu evento', secondary: 'Ver cómo suena', mediaLabel: 'En plena fiesta', mediaCaption: 'La calle es nuestro escenario', photoAlt: 'La Clandestina actuando en directo',
       ticker: ['Moros y Cristianos', 'Bodas', 'Despedidas', 'Fallas', 'Hogueras', 'Eventos privados'],
     },
     about: {
       eyebrow: 'Esto es La Clandestina', title: 'No tocamos delante del público. Tocamos con él.',
-      lead: 'Somos una charanga festiva, versátil y profesional. Sabemos cuándo hay que desatar la calle y cuándo toca cumplir cada minuto del programa.',
+      lead: 'Somos una charanga de Alcoy, festiva y versátil. Sabemos cuándo hay que desatar la calle en unos Moros y Cristianos y cuándo toca cumplir cada minuto del programa.',
       text: 'Llegamos preparados, coordinamos cada detalle y adaptamos el repertorio al momento. Porque una actuación memorable empieza mucho antes de la primera nota.',
       stamp: 'Directo · Calle · Fiesta',
     },
@@ -44,9 +45,9 @@ export const content = {
       eyebrow: 'Nuestra especialidad', title: 'Moros y Cristianos se viven desde dentro.',
       text: 'Conocemos el pulso de la fiesta: la emoción de una entrada, el ambiente de la filà y esas horas en las que la música hace que todo el mundo avance unido. Nos adaptamos al acto, al recorrido y a cada comparsa con respeto por la tradición y actitud de sobra.',
       points: ['Entradas y pasacalles', 'Dianas y acompañamientos', 'Filaes, comparsas y cuartelillos'],
-      cta: 'Consultar disponibilidad', photoAlt: 'La Clandestina actuando en Moros y Cristianos',
+      cta: 'Consultar disponibilidad', more: 'Moros y Cristianos en Alcoy y otros pueblos', photoAlt: 'La Clandestina actuando en Moros y Cristianos',
     },
-    eventsIntro: { eyebrow: 'Dónde nos liamos', title: 'Una charanga. Seis maneras de cambiar el plan.', text: 'Cada evento pide una intensidad distinta. Nosotros ponemos la música, el ritmo y la forma de entrar en escena.' },
+    eventsIntro: { eyebrow: 'Dónde nos liamos', title: 'Una charanga. Seis maneras de cambiar el plan.', text: 'Cada evento pide una intensidad distinta. La casa es Alcoy; la zona publicada, Alicante, Valencia y alrededores.', zoneLink: 'Ver la zona de actuación' },
     events: sharedEvents.es,
     sound: {
       eyebrow: 'Nuestro sonido', title: 'Tradición en los metales. El presente en cada versión.',
@@ -72,20 +73,21 @@ export const content = {
   va: {
     lang: 'ca', locale: 'ca_ES', path: '/va/', alternatePath: '/', languageName: 'Valencià',
     seo: {
-      title: 'La Clandestina Alcoi | Xaranga per a festes i esdeveniments',
-      description: 'Xaranga La Clandestina d’Alcoi, especialitzada en Moros i Cristians, bodes, comiats, Falles, Fogueres i esdeveniments privats. Pressupost per WhatsApp.',
+      title: 'Xaranga en Alcoi | Moros i Cristians · Alacant i València',
+      description: 'La Clandestina és la xaranga d’Alcoi. Especialitat en Moros i Cristians i música de carrer a les províncies d’Alacant i València. Web informativa.',
+      keywords: ['xaranga en Alcoi', 'xaranga Alcoi', 'charanga Alcoy', 'moros i cristians', 'xaranga Alacant', 'xaranga València'],
     },
-    nav: { start: 'Inici', specialty: 'Especialitat', events: 'Esdeveniments', gallery: 'En acció', contact: 'Contacte', budget: 'Demanar pressupost', open: 'Obrir menú', close: 'Tancar menú' },
+    nav: { start: 'Inici', specialty: 'Especialitat', moros: 'Moros i Cristians', zone: 'Alacant i València', events: 'Esdeveniments', gallery: 'En acció', contact: 'Contacte', budget: 'Demanar pressupost', open: 'Obrir menú', close: 'Tancar menú' },
     hero: {
-      eyebrow: 'Xaranga en directe · Comunitat Valenciana',
-      titleStart: 'On apareix', titleAccent: 'La Clandestina,', titleEnd: 'comença la festa.',
-      text: 'Música al carrer, connexió amb la gent i una energia que no s’assaja. Especialistes en Moros i Cristians i preparats per a qualsevol celebració.',
+      eyebrow: 'Xaranga d’Alcoi · Moros i Cristians',
+      titleStart: 'Xaranga en Alcoi.', titleAccent: 'Moros i Cristians', titleEnd: 'a Alacant i València.',
+      text: 'La Clandestina ix d’Alcoi: música al carrer, connexió amb la gent i una energia que no s’assaja. L’especialitat són els Moros i Cristians, a les províncies d’Alacant i València.',
       cta: 'Conta’ns el teu esdeveniment', secondary: 'Vore com sona', mediaLabel: 'En plena festa', mediaCaption: 'El carrer és el nostre escenari', photoAlt: 'La Clandestina actuant en directe',
       ticker: ['Moros i Cristians', 'Bodes', 'Comiats', 'Falles', 'Fogueres', 'Esdeveniments privats'],
     },
     about: {
       eyebrow: 'Açò és La Clandestina', title: 'No toquem davant del públic. Toquem amb ell.',
-      lead: 'Som una xaranga festiva, versàtil i professional. Sabem quan cal desfermar el carrer i quan toca complir cada minut del programa.',
+      lead: 'Som una xaranga d’Alcoi, festiva i versàtil. Sabem quan cal desfermar el carrer en uns Moros i Cristians i quan toca complir cada minut del programa.',
       text: 'Arribem preparats, coordinem cada detall i adaptem el repertori al moment. Perquè una actuació memorable comença molt abans de la primera nota.',
       stamp: 'Directe · Carrer · Festa',
     },
@@ -93,9 +95,9 @@ export const content = {
       eyebrow: 'La nostra especialitat', title: 'Els Moros i Cristians es viuen des de dins.',
       text: 'Coneixem el pols de la festa: l’emoció d’una entrada, l’ambient de la filà i eixes hores en què la música fa que tot el món avance unit. Ens adaptem a l’acte, al recorregut i a cada comparsa amb respecte per la tradició i actitud de sobra.',
       points: ['Entrades i passacarrers', 'Dianes i acompanyaments', 'Filaes, comparses i casernes'],
-      cta: 'Consultar disponibilitat', photoAlt: 'La Clandestina actuant en Moros i Cristians',
+      cta: 'Consultar disponibilitat', more: 'Moros i Cristians a Alcoi i altres pobles', photoAlt: 'La Clandestina actuant en Moros i Cristians',
     },
-    eventsIntro: { eyebrow: 'On la muntem', title: 'Una xaranga. Sis maneres de canviar el pla.', text: 'Cada esdeveniment demana una intensitat diferent. Nosaltres posem la música, el ritme i la manera d’entrar en escena.' },
+    eventsIntro: { eyebrow: 'On la muntem', title: 'Una xaranga. Sis maneres de canviar el pla.', text: 'Cada esdeveniment demana una intensitat diferent. La casa és Alcoi; la zona publicada, Alacant, València i voltants.', zoneLink: 'Vore la zona d’actuació' },
     events: sharedEvents.va,
     sound: {
       eyebrow: 'El nostre so', title: 'Tradició en els metalls. El present en cada versió.',

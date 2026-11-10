@@ -17,6 +17,7 @@ const directMessage = `${copy.contact.request} ${copy.contact.noDate}.`;
         <span>{copy.contact.direct}</span>
         <a href={whatsappUrl(directMessage)} target="_blank" rel="noopener noreferrer">{copy.contact.directCta} ↗</a>
         <strong>{siteConfig.phone.display}</strong>
+        {siteConfig.social.instagram && <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>}
       </div>
     </div>
 
