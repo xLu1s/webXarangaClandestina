@@ -25,12 +25,12 @@ const copy = content[locale];
   <main>
     <Hero copy={copy} />
     <About copy={copy} />
-    <Specialty copy={copy} locale={locale} />
-    <Services copy={copy} locale={locale} />
+    <Specialty copy={copy} />
+    <Services copy={copy} />
     <Repertoire copy={copy} />
     <Gallery copy={copy} locale={locale} />
     <WhyUs copy={copy} />
-    <Contact copy={copy} />
+    <Contact copy={copy} place={copy.contact.place} />
   </main>
   <Footer copy={copy} locale={locale} route="home" />
   <WhatsAppButton copy={copy} />

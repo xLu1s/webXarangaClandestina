@@ -82,20 +82,55 @@ describe('structured data', () => {
   });
 });
 
+const homeAsOnMain = {
+  es: {
+    title: 'La Clandestina Alcoi | Charanga para fiestas y eventos',
+    description: 'Charanga La Clandestina de Alcoy, especializada en Moros y Cristianos, bodas, despedidas, Fallas, Hogueras y eventos privados. Presupuesto por WhatsApp.',
+    h1: 'Donde aparece La Clandestina, empieza la fiesta.',
+    eyebrow: 'Charanga en directo · Comunitat Valenciana',
+    intro: 'Música en la calle, conexión con la gente y una energía que no se ensaya. Especialistas en Moros y Cristianos y preparados para cualquier celebración.',
+    aboutTitle: 'No tocamos delante del público. Tocamos con él.',
+    aboutLead: 'Somos una charanga festiva, versátil y profesional. Sabemos cuándo hay que desatar la calle y cuándo toca cumplir cada minuto del programa.',
+    specialtyTitle: 'Moros y Cristianos se viven desde dentro.',
+    eventsTitle: 'Una charanga. Seis maneras de cambiar el plan.',
+    eventsText: 'Cada evento pide una intensidad distinta. Nosotros ponemos la música, el ritmo y la forma de entrar en escena.',
+    place: 'Ubicación: Alcoy (Alicante)',
+  },
+  va: {
+    title: 'La Clandestina Alcoi | Xaranga per a festes i esdeveniments',
+    description: 'Xaranga La Clandestina d’Alcoi, especialitzada en Moros i Cristians, bodes, comiats, Falles, Fogueres i esdeveniments privats. Pressupost per WhatsApp.',
+    h1: 'On apareix La Clandestina, comença la festa.',
+    eyebrow: 'Xaranga en directe · Comunitat Valenciana',
+    intro: 'Música al carrer, connexió amb la gent i una energia que no s’assaja. Especialistes en Moros i Cristians i preparats per a qualsevol celebració.',
+    aboutTitle: 'No toquem davant del públic. Toquem amb ell.',
+    aboutLead: 'Som una xaranga festiva, versàtil i professional. Sabem quan cal desfermar el carrer i quan toca complir cada minut del programa.',
+    specialtyTitle: 'Els Moros i Cristians es viuen des de dins.',
+    eventsTitle: 'Una xaranga. Sis maneres de canviar el pla.',
+    eventsText: 'Cada esdeveniment demana una intensitat diferent. Nosaltres posem la música, el ritme i la manera d’entrar en escena.',
+    place: 'Ubicació: Alcoi (Alacant)',
+  },
+} as const;
+
 describe('copy', () => {
-  it('puts Alcoy, Moros y Cristianos and both provinces in the homepage title, description and H1', () => {
-    const esH1 = `${content.es.hero.titleStart} ${content.es.hero.titleAccent} ${content.es.hero.titleEnd}`;
-    const vaH1 = `${content.va.hero.titleStart} ${content.va.hero.titleAccent} ${content.va.hero.titleEnd}`;
-    for (const term of ['Alcoy', 'Moros y Cristianos', 'Alicante', 'Valencia', 'xaranga']) {
-      expect(content.es.seo.title.toLowerCase()).toContain(term.toLowerCase());
-      expect(content.es.seo.description.toLowerCase()).toContain(term.toLowerCase());
-      expect(esH1.toLowerCase()).toContain(term.toLowerCase());
+  it('keeps the homepage copy from main and adds the location line once', () => {
+    for (const locale of ['es', 'va'] as const) {
+      const page = content[locale];
+      const expected = homeAsOnMain[locale];
+      const h1 = `${page.hero.titleStart} ${page.hero.titleAccent} ${page.hero.titleEnd}`;
+      expect(page.seo.title).toBe(expected.title);
+      expect(page.seo.description).toBe(expected.description);
+      expect(h1).toBe(expected.h1);
+      expect(page.hero.eyebrow).toBe(expected.eyebrow);
+      expect(page.hero.text).toBe(expected.intro);
+      expect(page.about.title).toBe(expected.aboutTitle);
+      expect(page.about.lead).toBe(expected.aboutLead);
+      expect(page.specialty.title).toBe(expected.specialtyTitle);
+      expect(page.eventsIntro.title).toBe(expected.eventsTitle);
+      expect(page.eventsIntro.text).toBe(expected.eventsText);
+      expect(page.contact.place).toBe(expected.place);
+      const serialized = JSON.stringify(page);
+      expect(serialized.split(expected.place).length - 1).toBe(1);
     }
-    expect(esH1.toLowerCase()).toContain('charanga');
-    expect(vaH1).toContain('Xaranga en Alcoi');
-    expect(content.va.seo.title).toContain('Alcoi');
-    expect(content.va.seo.description).toContain('Alacant');
-    expect(content.va.seo.description).toContain('València');
   });
 
   it('does not invent a confirmation marker on the homepage', () => {

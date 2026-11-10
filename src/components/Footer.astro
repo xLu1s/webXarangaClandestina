@@ -8,42 +8,59 @@ interface Props {
   locale: Locale;
   route: RouteId;
   contactHref?: string;
+  variant?: 'home' | 'page';
 }
-const { copy, locale, route, contactHref = '#contacto' } = Astro.props;
+const { copy, locale, route, contactHref = '#contacto', variant } = Astro.props;
+const mode = variant ?? (route === 'home' ? 'home' : 'page');
 const year = new Date().getFullYear();
 const homeHref = localizedPath('home', locale);
-const pages = [
-  { href: homeHref, label: copy.nav.start },
+const pageLinks = [
   { href: localizedPath('moros', locale), label: copy.nav.moros },
   { href: localizedPath('zone', locale), label: copy.nav.zone },
-  { href: contactHref, label: copy.nav.contact },
 ];
+const links = mode === 'home'
+  ? [
+      { href: '#especialidad', label: copy.nav.specialty },
+      { href: '#eventos', label: copy.nav.events },
+      { href: '#galeria', label: copy.nav.gallery },
+      ...pageLinks,
+    ]
+  : [
+      { href: homeHref, label: copy.nav.start },
+      ...pageLinks,
+      { href: contactHref, label: copy.nav.contact },
+    ];
+const socialLinks = mode === 'home'
+  ? Object.entries(siteConfig.social).filter(([, url]) => Boolean(url))
+  : [];
 const currentPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 ---
 
 <footer class="footer">
   <div class="shell">
     <div class="footer-top">
-      <a href={homeHref} class="footer-brand">La<br />Clandestina<span>®</span></a>
+      <a href={mode === 'home' ? '#inicio' : homeHref} class="footer-brand">La<br />Clandestina<span>®</span></a>
       <p>{copy.footer.line}</p>
       <a href="#inicio" class="back-top">{copy.footer.back} ↑</a>
     </div>
     <div class="footer-grid">
       <div>
         <h2>{copy.footer.nav}</h2>
-        {pages.map((page) => (
+        {links.map((page) => (
           <a href={page.href} aria-current={page.href === currentPath ? 'page' : undefined}>{page.label}</a>
         ))}
+      </div>
+      <div>
+        <h2>{copy.footer.contact}</h2>
+        {mode === 'home' && <a href={`tel:+${siteConfig.phone.raw}`}>{siteConfig.phone.display}</a>}
+        <a href={contactHref}>{mode === 'home' ? copy.nav.budget : copy.nav.contact}</a>
       </div>
       <div>
         <h2>{copy.footer.language}</h2>
         <a href={localizedPath(route, 'es')} hreflang="es" lang="es" aria-current={locale === 'es' ? 'page' : undefined}>Castellano</a>
         <a href={localizedPath(route, 'va')} hreflang="ca-valencia" lang="ca-valencia" aria-current={locale === 'va' ? 'page' : undefined}>Valencià</a>
       </div>
-      <div>
-        <h2>{copy.footer.contact}</h2>
-        <a href={contactHref}>{copy.nav.contact}</a>
-      </div>
+      {socialLinks.length > 0 && <div><h2>Social</h2>{socialLinks.map(([name, url]) => <a href={url} target="_blank" rel="noopener noreferrer">{name}</a>)}</div>}
     </div>
     <div class="footer-bottom"><span>© {year} {siteConfig.legalName}. {copy.footer.rights}</span><span>ES · VA</span></div>
   </div>

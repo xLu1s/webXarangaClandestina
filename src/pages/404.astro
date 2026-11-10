@@ -18,7 +18,7 @@ const links = [
 ---
 
 <Layout locale={locale} route="home" title="Página no encontrada | La Clandestina" description="Esta dirección no existe en la web de la xaranga La Clandestina, de Alcoy." noindex>
-  <Header copy={copy} locale={locale} route="home" contactHref={`${home}#contacto`} includeGallery={false} />
+  <Header copy={copy} locale={locale} route="home" contactHref={`${home}#contacto`} navMode="page" />
   <main>
     <section id="inicio" class="hero hero-long section-pad">
       <div class="hero-shape hero-shape-one" aria-hidden="true"></div>
@@ -34,5 +34,5 @@ const links = [
       </div>
     </section>
   </main>
-  <Footer copy={copy} locale={locale} route="home" contactHref={`${home}#contacto`} />
+  <Footer copy={copy} locale={locale} route="home" contactHref={`${home}#contacto`} variant="page" />
 </Layout>

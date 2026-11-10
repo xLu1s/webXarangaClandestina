@@ -34,6 +34,7 @@ const pageDescription = description ?? copy.seo.description;
 const canonical = pageCanonical(route, locale);
 const alternates = hreflangLinks(route);
 const ogImage = new URL('/og-default.webp', siteConfig.url).href;
+const logoUrl = new URL('/logo.webp', siteConfig.url).href;
 const alternateLocale = locale === 'es' ? 'va' : 'es';
 const homeCrumb = locale === 'va' ? 'Inici' : 'Inicio';
 const breadcrumb = crumbs ?? (route === 'home'
@@ -67,7 +68,7 @@ const jsonLd = buildJsonLd({
     {!noindex && alternates.map((link) => <link rel="alternate" hreflang={link.hreflang} href={link.href} />)}
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="preload" href="/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="image_src" href={logoUrl} />
     {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
 
     <meta property="og:type" content="website" />
@@ -86,6 +87,10 @@ const jsonLd = buildJsonLd({
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
     <meta name="twitter:image" content={ogImage} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
     <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-S15P5X5WN5"></script>
     <script is:inline>

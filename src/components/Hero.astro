@@ -10,7 +10,7 @@ const { copy } = Astro.props;
   <div class="hero-shape hero-shape-one" aria-hidden="true"></div>
   <div class="hero-shape hero-shape-two" aria-hidden="true"></div>
   <div class="shell hero-grid">
-    <div class="hero-copy">
+    <div class="hero-copy reveal">
       <p class="eyebrow"><span></span>{copy.hero.eyebrow}</p>
       <h1>{copy.hero.titleStart} <em>{copy.hero.titleAccent}</em> {copy.hero.titleEnd}</h1>
       <p class="hero-intro">{copy.hero.text}</p>
@@ -20,7 +20,7 @@ const { copy } = Astro.props;
       </div>
     </div>
 
-    <div class="hero-media">
+    <div class="hero-media reveal reveal-late">
       <div class="video-kicker"><span>LIVE</span>{copy.hero.mediaLabel}</div>
       <div class="video-frame">
         <img src={media.hero.image} alt={copy.hero.photoAlt} width={media.hero.width} height={media.hero.height} fetchpriority="high" />

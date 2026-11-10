@@ -2,32 +2,43 @@
 import type { SiteContent } from '../data/content';
 import { media } from '../data/media';
 import { localizedPath, type RouteId } from '../data/routes';
-import { siteConfig, type Locale } from '../data/site';
+import { siteConfig, whatsappUrl, type Locale } from '../data/site';
 
 interface Props {
   copy: SiteContent;
   locale: Locale;
   route: RouteId;
   contactHref?: string;
-  includeGallery?: boolean;
+  /** Home keeps the original section links. Other pages only link to real URLs. */
+  navMode?: 'home' | 'page';
 }
-const { copy, locale, route, contactHref = '#contacto', includeGallery } = Astro.props;
-const showGallery = includeGallery ?? route === 'home';
+const { copy, locale, route, contactHref = '#contacto', navMode } = Astro.props;
+const mode = navMode ?? (route === 'home' ? 'home' : 'page');
 const homeHref = localizedPath('home', locale);
-const morosHref = localizedPath('moros', locale);
-const zoneHref = localizedPath('zone', locale);
-const nav = [
-  ...(route === 'home' ? [] : [{ label: copy.nav.start, href: homeHref }]),
-  { label: copy.nav.moros, href: morosHref },
-  { label: copy.nav.zone, href: zoneHref },
-  ...(showGallery ? [{ label: copy.nav.gallery, href: '#galeria' }] : []),
-  { label: copy.nav.contact, href: contactHref },
+const pageLinks = [
+  { label: copy.nav.moros, href: localizedPath('moros', locale) },
+  { label: copy.nav.zone, href: localizedPath('zone', locale) },
 ];
+const nav = mode === 'home'
+  ? [
+      { label: copy.nav.specialty, href: '#especialidad' },
+      { label: copy.nav.events, href: '#eventos' },
+      { label: copy.nav.gallery, href: '#galeria' },
+      ...pageLinks,
+      { label: copy.nav.contact, href: '#contacto' },
+    ]
+  : [
+      { label: copy.nav.start, href: homeHref },
+      ...pageLinks,
+      { label: copy.nav.contact, href: contactHref },
+    ];
+const greeting = locale === 'va' ? 'Hola! Vull demanar informació sobre La Clandestina.' : '¡Hola! Quiero pedir información sobre La Clandestina.';
+const brandHref = mode === 'home' ? '#inicio' : homeHref;
 ---
 
 <header class="site-header" id="site-header">
   <nav class="nav-island" aria-label={locale === 'va' ? 'Navegació principal' : 'Navegación principal'}>
-    <a href={homeHref} class="brand" aria-label={`${siteConfig.name} · ${copy.nav.start}`}>
+    <a href={brandHref} class="brand" aria-label={`${siteConfig.name} · ${copy.nav.start}`}>
       <img
         class="brand-logo"
         src={media.logo}
@@ -50,7 +61,7 @@ const nav = [
         <a href={localizedPath(route, 'es')} lang="es" hreflang="es" aria-current={locale === 'es' ? 'page' : undefined}>ES</a>
         <a href={localizedPath(route, 'va')} lang="ca-valencia" hreflang="ca-valencia" aria-current={locale === 'va' ? 'page' : undefined}>VA</a>
       </div>
-      <a class="nav-cta" href={contactHref}>{copy.nav.budget}</a>
+      <a class="nav-cta" href={whatsappUrl(greeting)} target="_blank" rel="noopener noreferrer">{copy.nav.budget}</a>
       <button class="menu-toggle" id="menu-toggle" aria-label={copy.nav.open} aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span>
       </button>
@@ -63,7 +74,7 @@ const nav = [
       <ul role="list">
         {nav.map((item, index) => <li><span>0{index + 1}</span><a href={item.href}>{item.label}</a></li>)}
       </ul>
-      <a class="button button-dark" href={contactHref}>{copy.nav.budget}</a>
+      <a class="button button-dark" href={whatsappUrl(greeting)} target="_blank" rel="noopener noreferrer">{copy.nav.budget}</a>
     </div>
   </div>
 </header>

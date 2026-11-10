@@ -80,9 +80,18 @@ test.describe('indexable pages', () => {
       }
 
       const visibleText = await page.locator('body').innerText();
-      expect(visibleText.match(/\+34 663 401 455/g) ?? []).toHaveLength(1);
+      const phoneCount = pageCase.route === 'home' ? 2 : 1;
+      expect(visibleText.match(/\+34 663 401 455/g) ?? []).toHaveLength(phoneCount);
       const instagram = page.locator('a[href="https://www.instagram.com/xaranga_laclandestina/"]');
       await expect(instagram).toHaveCount(1);
+      if (pageCase.route === 'home') {
+        const place = pageCase.locale === 'es' ? 'Ubicación: Alcoy (Alicante)' : 'Ubicació: Alcoi (Alacant)';
+        const other = pageCase.locale === 'es' ? 'Ubicació: Alcoi (Alacant)' : 'Ubicación: Alcoy (Alicante)';
+        expect(visibleText.match(new RegExp(place.replace(/[()]/g, '\\$&'), 'g')) ?? []).toHaveLength(1);
+        expect(visibleText).not.toContain(other);
+        await expect(page.locator('header')).toContainText(pageCase.locale === 'es' ? 'Moros y Cristianos' : 'Moros i Cristians');
+        await expect(page.locator('header')).toContainText(pageCase.locale === 'es' ? 'Alicante y Valencia' : 'Alacant i València');
+      }
     });
   }
 });

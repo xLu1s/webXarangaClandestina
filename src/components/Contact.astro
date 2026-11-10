@@ -1,8 +1,8 @@
 ---
 import type { SiteContent } from '../data/content';
 import { siteConfig, whatsappUrl } from '../data/site';
-interface Props { copy: SiteContent; }
-const { copy } = Astro.props;
+interface Props { copy: SiteContent; place?: string; showInstagram?: boolean; }
+const { copy, place, showInstagram = false } = Astro.props;
 const directMessage = `${copy.contact.request} ${copy.contact.noDate}.`;
 ---
 
@@ -13,11 +13,12 @@ const directMessage = `${copy.contact.request} ${copy.contact.noDate}.`;
       <p class="eyebrow"><span></span>{copy.contact.eyebrow}</p>
       <h2 class="display-title">{copy.contact.title}</h2>
       <p>{copy.contact.text}</p>
+      {place && <p class="place-line">{place}</p>}
       <div class="direct-contact">
         <span>{copy.contact.direct}</span>
         <a href={whatsappUrl(directMessage)} target="_blank" rel="noopener noreferrer">{copy.contact.directCta} ↗</a>
         <strong>{siteConfig.phone.display}</strong>
-        {siteConfig.social.instagram && <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>}
+        {showInstagram && siteConfig.social.instagram && <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>}
       </div>
     </div>
 
