@@ -1,0 +1,38 @@
+---
+import { content } from '../data/content';
+import { localizedPath } from '../data/routes';
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const locale = 'es';
+const copy = content.es;
+const home = localizedPath('home', 'es');
+const links = [
+  { href: home, label: 'Inicio' },
+  { href: localizedPath('home', 'va'), label: 'Inici en valencià' },
+  { href: localizedPath('moros', 'es'), label: 'Moros y Cristianos' },
+  { href: localizedPath('zone', 'es'), label: 'Alicante y Valencia' },
+  { href: `${home}#contacto`, label: 'Contacto' },
+];
+---
+
+<Layout locale={locale} route="home" title="Página no encontrada | La Clandestina" description="Esta dirección no existe en la web de la xaranga La Clandestina, de Alcoy." noindex>
+  <Header copy={copy} locale={locale} route="home" contactHref={`${home}#contacto`} navMode="page" />
+  <main>
+    <section id="inicio" class="hero hero-long section-pad">
+      <div class="hero-shape hero-shape-one" aria-hidden="true"></div>
+      <div class="hero-shape hero-shape-two" aria-hidden="true"></div>
+      <div class="shell">
+        <p class="eyebrow"><span></span>404</p>
+        <h1>Esta página no está.</h1>
+        <p class="hero-intro">El enlace no corresponde a ninguna página de La Clandestina, la xaranga de Alcoy. Puedes volver al inicio, a Moros y Cristianos o a la zona de Alicante y Valencia.</p>
+        <p class="hero-intro">Aquesta adreça no existeix. La versió en valencià és a l’inici.</p>
+        <div class="hero-actions">
+          {links.map((link) => <a class="button button-dark" href={link.href}>{link.label}</a>)}
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer copy={copy} locale={locale} route="home" contactHref={`${home}#contacto`} variant="page" />
+</Layout>

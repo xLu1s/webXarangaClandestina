@@ -1,6 +1,7 @@
 ---
 import type { Locale } from '../data/site';
 import { content } from '../data/content';
+import { media } from '../data/media';
 import Layout from '../layouts/Layout.astro';
 import Header from './Header.astro';
 import Hero from './Hero.astro';
@@ -19,8 +20,8 @@ const { locale } = Astro.props;
 const copy = content[locale];
 ---
 
-<Layout locale={locale}>
-  <Header copy={copy} locale={locale} />
+<Layout locale={locale} route="home" preloadImage={media.hero.image}>
+  <Header copy={copy} locale={locale} route="home" />
   <main>
     <Hero copy={copy} />
     <About copy={copy} />
@@ -29,8 +30,8 @@ const copy = content[locale];
     <Repertoire copy={copy} />
     <Gallery copy={copy} locale={locale} />
     <WhyUs copy={copy} />
-    <Contact copy={copy} />
+    <Contact copy={copy} place={copy.contact.place} />
   </main>
-  <Footer copy={copy} locale={locale} />
+  <Footer copy={copy} locale={locale} route="home" />
   <WhatsAppButton copy={copy} />
 </Layout>

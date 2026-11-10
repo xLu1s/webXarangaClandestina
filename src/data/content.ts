@@ -26,7 +26,7 @@ export const content = {
       title: 'La Clandestina Alcoi | Charanga para fiestas y eventos',
       description: 'Charanga La Clandestina de Alcoy, especializada en Moros y Cristianos, bodas, despedidas, Fallas, Hogueras y eventos privados. Presupuesto por WhatsApp.',
     },
-    nav: { start: 'Inicio', specialty: 'Especialidad', events: 'Eventos', gallery: 'En acción', contact: 'Contacto', budget: 'Pedir presupuesto', open: 'Abrir menú', close: 'Cerrar menú' },
+    nav: { start: 'Inicio', specialty: 'Especialidad', moros: 'Moros y Cristianos', zone: 'Alicante y Valencia', events: 'Eventos', gallery: 'En acción', contact: 'Contacto', budget: 'Pedir presupuesto', open: 'Abrir menú', close: 'Cerrar menú' },
     hero: {
       eyebrow: 'Charanga en directo · Comunitat Valenciana',
       titleStart: 'Donde aparece', titleAccent: 'La Clandestina,', titleEnd: 'empieza la fiesta.',
@@ -63,8 +63,8 @@ export const content = {
       ],
     },
     contact: {
-      eyebrow: 'Hablemos', title: 'Tu fecha puede ser nuestra próxima fiesta.', text: 'Completa los datos básicos y abriremos WhatsApp con el mensaje preparado. Sin formularios eternos ni esperas innecesarias.',
-      name: 'Nombre', namePlaceholder: '¿Cómo te llamas?', date: 'Fecha del evento', location: 'Localidad', locationPlaceholder: '¿Dónde será?', event: 'Tipo de evento', choose: 'Selecciona una opción', duration: 'Duración aproximada', durationPlaceholder: 'Ej. 2 horas', message: 'Cuéntanos un poco más', messagePlaceholder: 'Horario, recorrido, número de personas o cualquier detalle útil...', submit: 'Pedir presupuesto por WhatsApp', required: 'Campo obligatorio', direct: '¿Prefieres ir al grano?', directCta: 'Abrir WhatsApp directamente', privacy: 'Los datos se utilizan únicamente para preparar tu consulta en WhatsApp.', greeting: 'Hola, soy', request: 'Quiero pedir presupuesto para La Clandestina.', noDate: 'Fecha por confirmar', noDuration: 'Duración por confirmar',
+      eyebrow: 'Hablemos', title: 'Tu fecha puede ser nuestra próxima fiesta.', text: 'Completa los datos básicos y abriremos WhatsApp con el mensaje preparado. Sin formularios eternos ni esperas innecesarias.', place: 'Ubicación: Alcoy (Alicante)',
+      name: 'Nombre', namePlaceholder: '¿Cómo te llamas?', date: 'Fecha del evento', location: 'Localidad', locationPlaceholder: '¿Dónde será?', event: 'Tipo de evento', choose: 'Selecciona una opción', duration: 'Duración aproximada', durationPlaceholder: 'Ej. 2 horas', message: 'Cuéntanos un poco más', messagePlaceholder: 'Horario, recorrido, número de personas o cualquier detalle útil...', submit: 'Pedir presupuesto por WhatsApp', required: 'Campo obligatorio', direct: '¿Prefieres ir al grano?', directCta: 'Abrir WhatsApp directamente', privacy: 'Los datos se utilizan únicamente para preparar tu consulta en WhatsApp.', greeting: 'Hola, soy', request: 'Quiero pedir presupuesto para La Clandestina.', noDate: 'Fecha sin concretar', noDuration: 'Duración sin concretar',
       eventTypes: ['Moros y Cristianos', 'Despedida', 'Boda', 'Fallas', 'Hogueras', 'Evento privado', 'Otro'],
     },
     footer: { line: 'Música en directo para fiestas que se recuerdan.', nav: 'Navegación', language: 'Idioma', contact: 'Contacto', rights: 'Todos los derechos reservados.', back: 'Volver arriba' },
@@ -75,7 +75,7 @@ export const content = {
       title: 'La Clandestina Alcoi | Xaranga per a festes i esdeveniments',
       description: 'Xaranga La Clandestina d’Alcoi, especialitzada en Moros i Cristians, bodes, comiats, Falles, Fogueres i esdeveniments privats. Pressupost per WhatsApp.',
     },
-    nav: { start: 'Inici', specialty: 'Especialitat', events: 'Esdeveniments', gallery: 'En acció', contact: 'Contacte', budget: 'Demanar pressupost', open: 'Obrir menú', close: 'Tancar menú' },
+    nav: { start: 'Inici', specialty: 'Especialitat', moros: 'Moros i Cristians', zone: 'Alacant i València', events: 'Esdeveniments', gallery: 'En acció', contact: 'Contacte', budget: 'Demanar pressupost', open: 'Obrir menú', close: 'Tancar menú' },
     hero: {
       eyebrow: 'Xaranga en directe · Comunitat Valenciana',
       titleStart: 'On apareix', titleAccent: 'La Clandestina,', titleEnd: 'comença la festa.',
@@ -112,7 +112,7 @@ export const content = {
       ],
     },
     contact: {
-      eyebrow: 'Parlem', title: 'La teua data pot ser la nostra pròxima festa.', text: 'Completa les dades bàsiques i obrirem WhatsApp amb el missatge preparat. Sense formularis eterns ni esperes innecessàries.',
+      eyebrow: 'Parlem', title: 'La teua data pot ser la nostra pròxima festa.', text: 'Completa les dades bàsiques i obrirem WhatsApp amb el missatge preparat. Sense formularis eterns ni esperes innecessàries.', place: 'Ubicació: Alcoi (Alacant)',
       name: 'Nom', namePlaceholder: 'Com et dius?', date: 'Data de l’esdeveniment', location: 'Localitat', locationPlaceholder: 'On serà?', event: 'Tipus d’esdeveniment', choose: 'Selecciona una opció', duration: 'Duració aproximada', durationPlaceholder: 'Ex. 2 hores', message: 'Conta’ns un poc més', messagePlaceholder: 'Horari, recorregut, nombre de persones o qualsevol detall útil...', submit: 'Demanar pressupost per WhatsApp', required: 'Camp obligatori', direct: 'Preferixes anar al gra?', directCta: 'Obrir WhatsApp directament', privacy: 'Les dades s’utilitzen únicament per a preparar la teua consulta en WhatsApp.', greeting: 'Hola, soc', request: 'Vull demanar pressupost per a La Clandestina.', noDate: 'Data per confirmar', noDuration: 'Duració per confirmar',
       eventTypes: ['Moros i Cristians', 'Comiat', 'Boda', 'Falles', 'Fogueres', 'Esdeveniment privat', 'Altre'],
     },

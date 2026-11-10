@@ -62,7 +62,7 @@ button { color: inherit; }
 .nav-cta:hover { background: var(--pink); }
 .menu-toggle { display: none; width: 46px; height: 46px; border: 0; border-radius: 10px; background: var(--cyan); cursor: pointer; }
 .menu-toggle span { display: block; width: 20px; height: 2px; margin: 5px auto; background: var(--ink); transition: transform .2s; }
-.mobile-menu { position: fixed; z-index: -1; inset: -18px -20px auto; height: 100vh; visibility: hidden; opacity: 0; background: var(--pink); transition: opacity .25s, visibility .25s; }
+.mobile-menu { position: fixed; z-index: -1; inset: -18px -20px auto; height: 100vh; overflow-y: auto; visibility: hidden; opacity: 0; background: var(--pink); transition: opacity .25s, visibility .25s; }
 .mobile-menu-inner { display: flex; height: 100%; flex-direction: column; padding: 120px 30px 40px; }
 .mobile-menu-inner > p { font-size: .75rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
 .mobile-menu ul { margin: auto 0; padding: 0; list-style: none; }
@@ -78,6 +78,13 @@ button { color: inherit; }
 .hero { position: relative; min-height: 760px; overflow: hidden; background: var(--cyan); padding-top: clamp(150px, 14vw, 205px); }
 .hero-grid { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(350px, .88fr); align-items: center; gap: clamp(45px, 8vw, 110px); }
 .hero h1 { margin: 0; font-family: var(--display); font-size: clamp(4rem, 7.6vw, 8.3rem); font-weight: 800; letter-spacing: -.075em; line-height: .83; }
+.hero-long h1 { font-size: clamp(2.7rem, 5.2vw, 5.2rem); line-height: .9; }
+.crumbs { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.crumbs a { border-bottom: 2px solid currentColor; }
+.pending { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+.pending p { margin: 0; border: 2px solid var(--ink); background: var(--yellow); padding: 14px 16px; color: var(--ink); font-weight: 700; line-height: 1.45; }
+.faq-list h3 { font-size: clamp(1.35rem, 2vw, 1.8rem); letter-spacing: -.03em; }
+.faq-list .event-row { align-items: start; }
 .hero h1 em { display: inline-block; margin: 7px 0; color: var(--paper); font-style: normal; text-shadow: 4px 4px 0 var(--ink); transform: rotate(-1.5deg); }
 .hero-intro { max-width: 660px; margin: 35px 0 0; font-size: clamp(1.08rem, 1.5vw, 1.35rem); line-height: 1.5; }
 .hero-actions { display: flex; align-items: center; gap: 28px; margin-top: 38px; }
@@ -193,6 +200,7 @@ button { color: inherit; }
 .contact { position: relative; overflow: hidden; background: var(--mint); }
 .contact-grid { display: grid; grid-template-columns: .8fr 1.2fr; align-items: start; gap: clamp(50px, 9vw, 130px); }
 .contact-intro > p:not(.eyebrow) { max-width: 580px; margin: 30px 0; font-size: 1.08rem; line-height: 1.7; }
+.contact-intro > p.place-line { margin: -6px 0 0; font-size: .78rem; font-weight: 700; letter-spacing: .06em; line-height: 1.4; }
 .direct-contact { display: flex; align-items: flex-start; flex-direction: column; gap: 7px; border-left: 5px solid var(--pink); margin-top: 45px; padding-left: 18px; }
 .direct-contact span { font-size: .73rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .direct-contact a { border-bottom: 1px solid currentColor; font-weight: 700; }
@@ -236,6 +244,7 @@ button { color: inherit; }
   .menu-toggle { display: block; }
   .hero-grid { grid-template-columns: 1fr .78fr; gap: 50px; }
   .hero h1 { font-size: clamp(3.7rem, 8vw, 6.5rem); }
+  .hero-long h1 { font-size: clamp(2.5rem, 5vw, 4.2rem); }
   .specialty-photo { min-height: 520px; }.specialty-photo img { min-height: 495px; }
   .event-row { grid-template-columns: 50px minmax(220px, .75fr) 1fr 30px; }
   .contact-grid { grid-template-columns: 1fr; }
@@ -257,6 +266,7 @@ button { color: inherit; }
   .hero { min-height: 0; padding-top: 130px; padding-bottom: 90px; }
   .hero-grid { grid-template-columns: 1fr; gap: 80px; }
   .hero h1 { font-size: clamp(3.65rem, 17vw, 6rem); }
+  .hero-long h1 { font-size: clamp(2.15rem, 9vw, 3.15rem); line-height: .92; }
   .hero-intro { font-size: 1rem; }
   .hero-actions { align-items: stretch; flex-direction: column; gap: 16px; }
   .hero-actions .text-link { align-self: flex-start; }

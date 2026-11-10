@@ -1,23 +1,54 @@
 ---
 import type { SiteContent } from '../data/content';
-import { siteConfig, whatsappUrl, type Locale } from '../data/site';
 import { media } from '../data/media';
+import { localizedPath, type RouteId } from '../data/routes';
+import { siteConfig, whatsappUrl, type Locale } from '../data/site';
 
-interface Props { copy: SiteContent; locale: Locale; }
-const { copy, locale } = Astro.props;
-const nav = [
-  { label: copy.nav.specialty, href: '#especialidad' },
-  { label: copy.nav.events, href: '#eventos' },
-  { label: copy.nav.gallery, href: '#galeria' },
-  { label: copy.nav.contact, href: '#contacto' },
+interface Props {
+  copy: SiteContent;
+  locale: Locale;
+  route: RouteId;
+  contactHref?: string;
+  /** Home keeps the original section links. Other pages only link to real URLs. */
+  navMode?: 'home' | 'page';
+}
+const { copy, locale, route, contactHref = '#contacto', navMode } = Astro.props;
+const mode = navMode ?? (route === 'home' ? 'home' : 'page');
+const homeHref = localizedPath('home', locale);
+const pageLinks = [
+  { label: copy.nav.moros, href: localizedPath('moros', locale) },
+  { label: copy.nav.zone, href: localizedPath('zone', locale) },
 ];
+const nav = mode === 'home'
+  ? [
+      { label: copy.nav.specialty, href: '#especialidad' },
+      { label: copy.nav.events, href: '#eventos' },
+      { label: copy.nav.gallery, href: '#galeria' },
+      ...pageLinks,
+      { label: copy.nav.contact, href: '#contacto' },
+    ]
+  : [
+      { label: copy.nav.start, href: homeHref },
+      ...pageLinks,
+      { label: copy.nav.contact, href: contactHref },
+    ];
 const greeting = locale === 'va' ? 'Hola! Vull demanar informació sobre La Clandestina.' : '¡Hola! Quiero pedir información sobre La Clandestina.';
+const brandHref = mode === 'home' ? '#inicio' : homeHref;
 ---
 
 <header class="site-header" id="site-header">
   <nav class="nav-island" aria-label={locale === 'va' ? 'Navegació principal' : 'Navegación principal'}>
-    <a href="#inicio" class="brand" aria-label={`${siteConfig.name} · ${copy.nav.start}`}>
-      <img class="brand-logo" src={media.logo} alt="Logo de la Charanga La Clandestina de Alcoi" width="1254" height="1254" fetchpriority="high" />
+    <a href={brandHref} class="brand" aria-label={`${siteConfig.name} · ${copy.nav.start}`}>
+      <img
+        class="brand-logo"
+        src={media.logo}
+        srcset={media.logoSrcSet}
+        sizes="48px"
+        alt="Logo de la Charanga La Clandestina de Alcoi"
+        width="128"
+        height="128"
+        decoding="async"
+      />
       <span>{siteConfig.name}</span>
     </a>
 
@@ -27,8 +58,8 @@ const greeting = locale === 'va' ? 'Hola! Vull demanar informació sobre La Clan
 
     <div class="nav-actions">
       <div class="language-switch" aria-label={copy.footer.language}>
-        <a href="/" lang="es" aria-current={locale === 'es' ? 'page' : undefined}>ES</a>
-        <a href="/va/" lang="ca-valencia" aria-current={locale === 'va' ? 'page' : undefined}>VA</a>
+        <a href={localizedPath(route, 'es')} lang="es" hreflang="es" aria-current={locale === 'es' ? 'page' : undefined}>ES</a>
+        <a href={localizedPath(route, 'va')} lang="ca-valencia" hreflang="ca-valencia" aria-current={locale === 'va' ? 'page' : undefined}>VA</a>
       </div>
       <a class="nav-cta" href={whatsappUrl(greeting)} target="_blank" rel="noopener noreferrer">{copy.nav.budget}</a>
       <button class="menu-toggle" id="menu-toggle" aria-label={copy.nav.open} aria-expanded="false" aria-controls="mobile-menu">

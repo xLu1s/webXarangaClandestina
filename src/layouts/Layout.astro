@@ -1,58 +1,58 @@
 ---
 import '../styles/global.css';
 import { content } from '../data/content';
-import { localePath, siteConfig, type Locale } from '../data/site';
+import type { FaqItem, Crumb } from '../data/seo';
+import { buildJsonLd, hreflangLinks, pageCanonical } from '../data/seo';
+import { localizedPath, type RouteId } from '../data/routes';
+import { siteConfig, type Locale } from '../data/site';
 
-interface Props { locale?: Locale; }
-const { locale = 'es' } = Astro.props;
+interface Props {
+  locale?: Locale;
+  route?: RouteId;
+  title?: string;
+  description?: string;
+  faqs?: readonly FaqItem[];
+  crumbs?: readonly Crumb[];
+  noindex?: boolean;
+  preloadImage?: string;
+}
+
+const {
+  locale = 'es',
+  route = 'home',
+  title,
+  description,
+  faqs,
+  crumbs,
+  noindex = false,
+  preloadImage,
+} = Astro.props;
+
 const copy = content[locale];
-const canonical = new URL(localePath(locale), siteConfig.url).href;
-const alternateLocale: Locale = locale === 'es' ? 'va' : 'es';
-const alternate = new URL(localePath(alternateLocale), siteConfig.url).href;
+const pageTitle = title ?? copy.seo.title;
+const pageDescription = description ?? copy.seo.description;
+const canonical = pageCanonical(route, locale);
+const alternates = hreflangLinks(route);
 const ogImage = new URL('/og-default.webp', siteConfig.url).href;
 const logoUrl = new URL('/logo.webp', siteConfig.url).href;
+const alternateLocale = locale === 'es' ? 'va' : 'es';
+const homeCrumb = locale === 'va' ? 'Inici' : 'Inicio';
+const breadcrumb = crumbs ?? (route === 'home'
+  ? undefined
+  : [
+      { name: homeCrumb, path: localizedPath('home', locale) },
+      { name: pageTitle, path: localizedPath(route, locale) },
+    ]);
 
-const jsonLdMusicGroup = {
-  '@context': 'https://schema.org',
-  '@type': 'MusicGroup',
-  '@id': `${siteConfig.url}/#organization`,
-  name: siteConfig.legalName,
-  alternateName: ['La Clandestina Alcoi', 'Xaranga La Clandestina'],
-  url: canonical,
-  description: copy.seo.description,
-  telephone: siteConfig.phone.display,
-  areaServed: siteConfig.areaServed,
-  logo: {
-    '@type': 'ImageObject',
-    url: logoUrl,
-    contentUrl: logoUrl,
-    width: 1254,
-    height: 1254,
-    caption: 'Logo de la Charanga La Clandestina de Alcoi',
-  },
-  image: [logoUrl, ogImage],
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Alcoi',
-    addressRegion: 'Alacant',
-    addressCountry: 'ES',
-  },
-  sameAs: Object.values(siteConfig.social).filter(Boolean),
-  knowsAbout: locale === 'va'
-    ? ['Moros i Cristians', 'Xaranga per a bodes', 'Xaranga per a festes']
-    : ['Moros y Cristianos', 'Charanga para bodas', 'Charanga para fiestas'],
-};
-
-const jsonLdWebSite = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  '@id': `${siteConfig.url}/#website`,
-  url: siteConfig.url,
-  name: siteConfig.legalName,
-  alternateName: 'La Clandestina Alcoi',
-  publisher: { '@id': `${siteConfig.url}/#organization` },
-  inLanguage: copy.lang,
-};
+const jsonLd = buildJsonLd({
+  route,
+  locale,
+  title: pageTitle,
+  description: pageDescription,
+  organizationDescription: content.es.seo.description,
+  crumbs: noindex ? undefined : breadcrumb,
+  faqs: noindex ? undefined : faqs,
+});
 ---
 
 <!doctype html>
@@ -60,24 +60,23 @@ const jsonLdWebSite = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{copy.seo.title}</title>
-    <meta name="description" content={copy.seo.description} />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
     <meta name="theme-color" content="#00C2CB" />
-    <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="es" href={locale === 'es' ? canonical : alternate} />
-    <link rel="alternate" hreflang="ca-valencia" href={locale === 'va' ? canonical : alternate} />
-    <link rel="alternate" hreflang="x-default" href={new URL('/', siteConfig.url).href} />
+    {!noindex && <link rel="canonical" href={canonical} />}
+    {!noindex && alternates.map((link) => <link rel="alternate" hreflang={link.hreflang} href={link.href} />)}
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="image_src" href={logoUrl} />
+    {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={siteConfig.legalName} />
     <meta property="og:locale" content={copy.locale} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:title" content={copy.seo.title} />
-    <meta property="og:description" content={copy.seo.description} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:type" content="image/webp" />
     <meta property="og:image:width" content="1200" />
@@ -85,8 +84,14 @@ const jsonLdWebSite = {
     <meta property="og:image:alt" content={siteConfig.legalName} />
     <meta property="og:locale:alternate" content={content[alternateLocale].locale} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImage} />
 
-    <!-- Existing production analytics property. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
     <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-S15P5X5WN5"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
@@ -95,11 +100,7 @@ const jsonLdWebSite = {
       gtag('config', 'G-S15P5X5WN5');
     </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLdMusicGroup)} />
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLdWebSite)} />
+    {!noindex && <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />}
   </head>
   <body>
     <slot />

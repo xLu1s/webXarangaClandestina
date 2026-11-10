@@ -8,7 +8,7 @@ const { copy } = Astro.props;
 <section id="especialidad" class="specialty section-pad">
   <div class="shell specialty-grid">
     <div class="specialty-photo">
-      <img src={media.specialty} alt={copy.specialty.photoAlt} loading="lazy" width="1200" height="900" />
+      <img src={media.specialty.image} alt={copy.specialty.photoAlt} loading="lazy" width={media.specialty.width} height={media.specialty.height} />
       <span class="photo-label">M&C</span>
       <span class="photo-star" aria-hidden="true">✦</span>
     </div>

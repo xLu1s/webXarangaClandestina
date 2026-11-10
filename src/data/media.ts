@@ -15,9 +15,10 @@ import despedidaPoster from '../images/DespedidaPoster.webp?url';
 
 // Replace these imports or edit paths here to update the featured media.
 export const media = {
-  logo: '/logo.webp',
-  hero: { image: fotoHero },
-  specialty: morosYCristianos,
+  logo: '/logo-128.webp',
+  logoSrcSet: '/logo-64.webp 64w, /logo-128.webp 128w',
+  hero: { image: fotoHero, width: 1600, height: 1200 },
+  specialty: { image: morosYCristianos, width: 1600, height: 1539 },
   gallery: [
     {
       type: 'video',
@@ -25,6 +26,8 @@ export const media = {
       poster: entradaCocentainaPoster,
       altEs: 'Entrada festera de La Clandestina en Cocentaina',
       altVa: 'Entrada festera de La Clandestina a Cocentaina',
+      width: 720,
+      height: 1292,
     },
     {
       type: 'video',
@@ -32,6 +35,8 @@ export const media = {
       poster: pasacarrerPoster,
       altEs: 'La Clandestina tocando durante un pasacalle',
       altVa: 'La Clandestina tocant durant un passacarrer',
+      width: 720,
+      height: 1280,
     },
     {
       type: 'video',
@@ -39,6 +44,8 @@ export const media = {
       poster: percuPoster,
       altEs: 'Percusión de La Clandestina durante las fiestas',
       altVa: 'Percussió de La Clandestina durant les festes',
+      width: 720,
+      height: 1280,
     },
     {
       type: 'video',
@@ -46,6 +53,8 @@ export const media = {
       poster: entradaMoraPoster,
       altEs: 'La Clandestina participando en una entrada mora',
       altVa: 'La Clandestina participant en una entrada mora',
+      width: 720,
+      height: 1280,
     },
     {
       type: 'video',
@@ -53,6 +62,8 @@ export const media = {
       poster: dinarPoster,
       altEs: 'La Clandestina animando una comida festera',
       altVa: 'La Clandestina animant un dinar fester',
+      width: 720,
+      height: 1280,
     },
     {
       type: 'video',
@@ -60,6 +71,8 @@ export const media = {
       poster: despedidaPoster,
       altEs: 'La Clandestina actuando en una despedida',
       altVa: 'La Clandestina actuant en un comiat',
+      width: 720,
+      height: 1280,
     },
   ],
 } as const;
