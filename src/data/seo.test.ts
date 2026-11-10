@@ -2,7 +2,6 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { content } from './content';
 import { landingH1, landingPlainText, landings } from './landings';
-import { findPendingMarkers, pendingMarkers } from './pending';
 import { indexablePaths, routes } from './routes';
 import { absoluteUrl, areaServed, buildJsonLd, hreflangLinks, organizationJsonLd } from './seo';
 
@@ -17,7 +16,9 @@ describe('structured data', () => {
     for (const place of group.areaServed) {
       expect(place).toMatchObject({ '@type': expect.stringMatching(/City|AdministrativeArea/), name: expect.any(String) });
     }
-    expect(JSON.stringify(group.areaServed)).not.toContain('alrededores');
+    expect(JSON.stringify(group.areaServed)).toContain('Almansa');
+    expect(JSON.stringify(group.areaServed)).toContain('Murcia');
+    expect(JSON.stringify(group.areaServed)).toContain('Albacete');
   });
 
   it('keeps one organization url on the Valencian homepage', () => {
@@ -133,21 +134,15 @@ describe('copy', () => {
     }
   });
 
-  it('does not invent a confirmation marker on the homepage', () => {
-    expect(findPendingMarkers(JSON.stringify(content))).toEqual([]);
+  it('does not leave a confirmation marker in the copy that gets published', () => {
+    const published = [
+      JSON.stringify(content),
+      ...Object.values(landings).flatMap((page) => [landingPlainText(page.es), landingPlainText(page.va)]),
+    ].join('\n');
+    expect(published.toLowerCase()).not.toContain('por confirmar');
   });
 
-  it('keeps each pending fact on the page that needs it', () => {
-    expect(findPendingMarkers(landingPlainText(landings.moros.es))).toEqual([pendingMarkers.playedTowns]);
-    expect(findPendingMarkers(landingPlainText(landings.moros.va))).toEqual([pendingMarkers.playedTowns]);
-    expect(findPendingMarkers(landingPlainText(landings.zone.es))).toEqual([
-      pendingMarkers.valenciaReach,
-      pendingMarkers.surroundings,
-    ]);
-    expect(findPendingMarkers(landingPlainText(landings.zone.va))).toEqual([
-      pendingMarkers.valenciaReach,
-      pendingMarkers.surroundings,
-    ]);
+  it('keeps the new pages pointed at their topics without a placeholder', () => {
     expect(landingH1(landings.moros.es)).toContain('Moros y Cristianos');
     expect(landingH1(landings.moros.es)).toContain('Alcoy');
     expect(landingH1(landings.zone.es)).toContain('banda de música');
@@ -178,6 +173,6 @@ describe('public files', () => {
     expect(llms).toContain('https://www.xarangaclandestina.es/moros-y-cristianos/');
     expect(llms).toContain('https://www.xarangaclandestina.es/va/xaranga-alacant-valencia/');
     expect(llms).toContain(phone);
-    expect(llms).not.toContain('[por confirmar:');
+    expect(llms.toLowerCase()).not.toContain('por confirmar');
   });
 });

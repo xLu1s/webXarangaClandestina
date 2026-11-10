@@ -93,9 +93,7 @@ const crumbs = [
             </article>
           ))}
         </div>
-        <div class="pending">
-          {page.notes.map((note) => <p>{note}</p>)}
-        </div>
+        {page.notes.map((note) => <p class="event-description">{note}</p>)}
       </div>
     </section>
 

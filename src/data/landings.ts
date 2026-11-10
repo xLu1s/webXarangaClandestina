@@ -1,4 +1,3 @@
-import { pendingMarkers } from './pending';
 import type { Locale } from './site';
 
 export const landingIds = ['moros', 'zone'] as const;
@@ -104,12 +103,14 @@ const morosEs: LandingCopy = {
       },
     ],
   },
-  notes: [pendingMarkers.playedTowns],
+  notes: [
+    'La sede del grupo es Alcoy. La galería muestra una entrada festera en Cocentaina. Esta página no añade otros pueblos ni comparsas.',
+  ],
   aside: {
     eyebrow: 'También en la provincia',
     title: 'De Alcoy hacia Alicante y Valencia.',
     paragraphs: [
-      'La charanga sale de Alcoy. La zona que la web describe es Alcoi, la Comunitat Valenciana y alrededores: la provincia de Alicante, la de Valencia y lo que haya justo alrededor.',
+      'La charanga sale de Alcoy. Se desplaza por la provincia de Alicante, la provincia de Valencia, Almansa (Albacete) y hasta Murcia.',
       'Hogueras, Fallas, bodas y despedidas se nombran en la portada. No tienen página propia. El eje de La Clandestina, el que esta página desarrolla, son los Moros y Cristianos.',
     ],
     linkLabel: 'Charanga en Alicante y Valencia',
@@ -127,7 +128,7 @@ const morosEs: LandingCopy = {
     {
       question: '¿En qué pueblos ha tocado?',
       answer:
-        'La sede es Alcoy y la galería muestra una entrada festera en Cocentaina. El resto de pueblos y comparsas no está publicado: hay un marcador visible en esta página.',
+        'La sede es Alcoy y la galería muestra una entrada festera en Cocentaina. La web no publica más pueblos ni comparsas.',
     },
     {
       question: '¿Es una banda de música o una charanga?',
@@ -219,12 +220,14 @@ const morosVa: LandingCopy = {
       },
     ],
   },
-  notes: [pendingMarkers.playedTowns],
+  notes: [
+    'La seu del grup és Alcoi. La galeria mostra una entrada festera a Cocentaina. Aquesta pàgina no afegeix altres pobles ni comparses.',
+  ],
   aside: {
     eyebrow: 'També a la província',
     title: 'D’Alcoi cap a Alacant i València.',
     paragraphs: [
-      'La xaranga ix d’Alcoi. La zona que la web descriu és Alcoi, la Comunitat Valenciana i voltants: la província d’Alacant, la de València i el que hi haja just al voltant.',
+      'La xaranga ix d’Alcoi. Es desplaça per la província d’Alacant, la província de València, Almansa (Albacete) i fins a Múrcia.',
       'Fogueres, Falles, bodes i comiats s’anomenen a la portada. No tenen pàgina pròpia. L’eix de La Clandestina, el que esta pàgina desenvolupa, són els Moros i Cristians.',
     ],
     linkLabel: 'Xaranga a Alacant i València',
@@ -242,7 +245,7 @@ const morosVa: LandingCopy = {
     {
       question: 'En quins pobles ha tocat?',
       answer:
-        'La seu és Alcoi i la galeria mostra una entrada festera a Cocentaina. La resta de pobles i comparses no està publicada: hi ha un marcador visible en esta pàgina.',
+        'La seu és Alcoi i la galeria mostra una entrada festera a Cocentaina. La web no publica més pobles ni comparses.',
     },
     {
       question: 'És una banda de música o una xaranga?',
@@ -261,7 +264,7 @@ const zoneEs: LandingCopy = {
   seo: {
     title: 'Charanga Alicante y Valencia | Banda de música de Alcoy',
     description:
-      'La Clandestina es la xaranga de Alcoy. Charanga y banda de música de calle para las provincias de Alicante y Valencia, y alrededores. Web informativa.',
+      'La Clandestina es la xaranga de Alcoy. Charanga y banda de música de calle por Alicante, Valencia, Almansa (Albacete) y hasta Murcia. Web informativa.',
   },
   keywords: [
     'banda de música Alicante',
@@ -279,9 +282,9 @@ const zoneEs: LandingCopy = {
   },
   eyebrow: 'Zona de actuación · desde Alcoy',
   intro:
-    'La Clandestina sale de Alcoy (Alcoi). En la web, la zona se resume como Alcoi, la Comunitat Valenciana y alrededores. Esta página separa la provincia de Alicante y la de Valencia, y aclara qué es el grupo para quien busca una charanga o una banda de música. No hay tienda ni reservas en línea.',
+    'La Clandestina sale de Alcoy (Alcoi) y se desplaza por la provincia de Alicante, la provincia de Valencia, Almansa (Albacete) y hasta Murcia. Esta página explica esa zona para quien busca una charanga o una banda de música. No hay tienda ni reservas en línea.',
   kicker: 'Calle',
-  caption: 'De Alcoy a las dos provincias',
+  caption: 'De Alcoy hasta Murcia',
   photoAlt: 'La Clandestina actuando en directo',
   crumb: 'Alicante y Valencia',
   about: {
@@ -290,13 +293,13 @@ const zoneEs: LandingCopy = {
     paragraphs: [
       'Una banda de música de concierto y una charanga no son lo mismo. La Clandestina se presenta como charanga y xaranga: música en la calle, metales, percusión, pasodobles, marchas, mambo, pop, rock, latino y los temas que están sonando. Llega preparada, coordina el detalle y adapta el repertorio al momento.',
       'Muchas búsquedas de «banda de música Alicante» o «banda de música Valencia» piden exactamente ese papel festero, no una formación sentada. Esta página está escrita para esa búsqueda. No afirma que el grupo sea una banda sinfónica.',
-      'Tampoco es un grupo con sede en la ciudad de Valencia ni en la de Alicante. Es de Alcoy, en el interior de la provincia de Alicante, y la zona publicada es la Comunitat Valenciana y alrededores.',
+      'No tiene sede en la ciudad de Valencia ni en la de Alicante. Es de Alcoy y, desde ahí, se desplaza por la provincia de Alicante, la provincia de Valencia, Almansa (Albacete) y hasta Murcia.',
     ],
   },
   list: {
-    eyebrow: 'Dos provincias',
-    title: 'Alicante, Valencia y alrededores.',
-    text: 'Cada bloque dice solo lo que la web ya sostiene, o marca el hueco cuando el dato no está. Hogueras y Fallas siguen en la portada, en segundo plano, sin página propia.',
+    eyebrow: 'Dónde se desplazan',
+    title: 'Alicante, Valencia, Almansa y Murcia.',
+    text: 'Hogueras y Fallas siguen en la portada, en segundo plano, sin página propia. El recorrido confirmado es este, sin lista de pueblos dentro de cada provincia.',
     rows: [
       {
         number: '01',
@@ -307,18 +310,20 @@ const zoneEs: LandingCopy = {
       {
         number: '02',
         name: 'Provincia de Valencia',
-        text: 'Valencia no es la sede. El grupo es de Alcoy y la frase de zona incluye la Comunitat Valenciana, así que la provincia entra en esa descripción. No hay una lista de actuaciones en la ciudad de València. Charanga Valencia, aquí, es un desplazamiento, no una xaranga local de Fallas.',
+        text: 'También se desplazan por la provincia de Valencia. La sede sigue siendo Alcoy: es un desplazamiento, no una xaranga con sede en la ciudad. No hay aquí una lista de actuaciones concretas.',
         color: 'coral',
       },
       {
         number: '03',
-        name: 'Alrededores',
-        text: 'La frase original de la web añade «y alrededores» y no nombra municipios de fuera de Alicante y Valencia. Hasta que ese límite esté escrito, no se inventa una tercera provincia.',
+        name: 'Almansa y Murcia',
+        text: 'Fuera de la Comunitat Valenciana el desplazamiento confirmado llega a Almansa, en Albacete, y hasta Murcia. No se nombran más municipios por el camino.',
         color: 'yellow',
       },
     ],
   },
-  notes: [pendingMarkers.valenciaReach, pendingMarkers.surroundings],
+  notes: [
+    'El grupo se desplaza por la provincia de Alicante, la provincia de Valencia, Almansa (Albacete) y hasta Murcia.',
+  ],
   aside: {
     eyebrow: 'La especialidad',
     title: 'Moros y Cristianos, el centro.',
@@ -342,12 +347,12 @@ const zoneEs: LandingCopy = {
     {
       question: '¿Tocáis en la ciudad de Valencia?',
       answer:
-        'La web dice que la zona es la Comunitat Valenciana y alrededores. No publica actuaciones en la ciudad de València ni el radio de desplazamiento: el hueco está marcado en esta página.',
+        'Sí se desplazan por la provincia de Valencia, cuya capital es la ciudad de Valencia. La sede del grupo sigue en Alcoy. No hay una lista de actuaciones concretas.',
     },
     {
-      question: '¿Qué hay de las comarcas de alrededor?',
+      question: '¿Llegáis más allá de Alicante y Valencia?',
       answer:
-        '«Alrededores» está en la frase de zona y no detalla pueblos de fuera de las dos provincias. Tampoco se inventan aquí.',
+        'Sí: el desplazamiento confirmado incluye Almansa (Albacete) y llega hasta Murcia, además de las provincias de Alicante y Valencia.',
     },
     {
       question: '¿Dónde está el contacto?',
@@ -361,7 +366,7 @@ const zoneVa: LandingCopy = {
   seo: {
     title: 'Xaranga Alacant i València | Banda de música d’Alcoi',
     description:
-      'La Clandestina és la xaranga d’Alcoi. Charanga i banda de música de carrer per a les províncies d’Alacant i València, i voltants. Web informativa.',
+      'La Clandestina és la xaranga d’Alcoi. Charanga i banda de música de carrer per Alacant, València, Almansa (Albacete) i fins a Múrcia. Web informativa.',
   },
   keywords: [
     'banda de música Alacant',
@@ -379,9 +384,9 @@ const zoneVa: LandingCopy = {
   },
   eyebrow: 'Zona d’actuació · des d’Alcoi',
   intro:
-    'La Clandestina ix d’Alcoi. A la web, la zona es resumeix com Alcoi, la Comunitat Valenciana i voltants. Aquesta pàgina separa la província d’Alacant i la de València, i aclareix què és el grup per a qui busca una xaranga, una charanga o una banda de música. No hi ha botiga ni reserves en línia.',
+    'La Clandestina ix d’Alcoi i es desplaça per la província d’Alacant, la província de València, Almansa (Albacete) i fins a Múrcia. Aquesta pàgina explica eixa zona per a qui busca una xaranga, una charanga o una banda de música. No hi ha botiga ni reserves en línia.',
   kicker: 'Carrer',
-  caption: 'D’Alcoi a les dues províncies',
+  caption: 'D’Alcoi fins a Múrcia',
   photoAlt: 'La Clandestina actuant en directe',
   crumb: 'Alacant i València',
   about: {
@@ -390,13 +395,13 @@ const zoneVa: LandingCopy = {
     paragraphs: [
       'Una banda de música de concert i una xaranga no són el mateix. La Clandestina es presenta com a charanga i xaranga: música al carrer, metalls, percussió, pasdobles, marxes, mambo, pop, rock, llatí i els temes que sonen ara. Arriba preparada, coordina el detall i adapta el repertori al moment.',
       'Moltes cerques de «banda de música Alacant» o «banda de música València» demanen exactament eixe paper fester, no una formació asseguda. Aquesta pàgina està escrita per a eixa cerca. No afirma que el grup siga una banda simfònica.',
-      'Tampoc és un grup amb seu a la ciutat de València ni a la d’Alacant. És d’Alcoi, a l’interior de la província d’Alacant, i la zona publicada és la Comunitat Valenciana i voltants.',
+      'No té seu a la ciutat de València ni a la d’Alacant. És d’Alcoi i, des d’allí, es desplaça per la província d’Alacant, la província de València, Almansa (Albacete) i fins a Múrcia.',
     ],
   },
   list: {
-    eyebrow: 'Dues províncies',
-    title: 'Alacant, València i voltants.',
-    text: 'Cada bloc diu només el que la web ja sosté, o marca el buit quan la dada no hi és. Fogueres i Falles continuen a la portada, en segon pla, sense pàgina pròpia.',
+    eyebrow: 'On es desplacen',
+    title: 'Alacant, València, Almansa i Múrcia.',
+    text: 'Fogueres i Falles continuen a la portada, en segon pla, sense pàgina pròpia. El recorregut confirmat és aquest, sense llista de pobles dins de cada província.',
     rows: [
       {
         number: '01',
@@ -407,18 +412,20 @@ const zoneVa: LandingCopy = {
       {
         number: '02',
         name: 'Província de València',
-        text: 'València no és la seu. El grup és d’Alcoi i la frase de zona inclou la Comunitat Valenciana, així que la província entra en eixa descripció. No hi ha una llista d’actuacions a la ciutat de València. Xaranga a València, ací, és un desplaçament, no una xaranga local de Falles.',
+        text: 'També es desplacen per la província de València. La seu continua sent Alcoi: és un desplaçament, no una xaranga amb seu a la ciutat. No hi ha ací una llista d’actuacions concretes.',
         color: 'coral',
       },
       {
         number: '03',
-        name: 'Voltants',
-        text: 'La frase original de la web afig «i voltants» i no anomena municipis de fora d’Alacant i València. Fins que eixe límit estiga escrit, no s’inventa una tercera província.',
+        name: 'Almansa i Múrcia',
+        text: 'Fora de la Comunitat Valenciana el desplaçament confirmat arriba a Almansa, a Albacete, i fins a Múrcia. No s’anomenen més municipis pel camí.',
         color: 'yellow',
       },
     ],
   },
-  notes: [pendingMarkers.valenciaReach, pendingMarkers.surroundings],
+  notes: [
+    'El grup es desplaça per la província d’Alacant, la província de València, Almansa (Albacete) i fins a Múrcia.',
+  ],
   aside: {
     eyebrow: 'L’especialitat',
     title: 'Moros i Cristians, el centre.',
@@ -442,12 +449,12 @@ const zoneVa: LandingCopy = {
     {
       question: 'Toqueu a la ciutat de València?',
       answer:
-        'La web diu que la zona és la Comunitat Valenciana i voltants. No publica actuacions a la ciutat de València ni el radi de desplaçament: el buit està marcat en esta pàgina.',
+        'Sí que es desplacen per la província de València, i la ciutat de València és la capital d’eixa província. La seu del grup continua a Alcoi. No hi ha una llista d’actuacions concretes.',
     },
     {
-      question: 'Què hi ha de les comarques del voltant?',
+      question: 'Arribeu més enllà d’Alacant i València?',
       answer:
-        '«Voltants» està a la frase de zona i no detalla pobles de fora de les dues províncies. Tampoc s’inventen ací.',
+        'Sí: el desplaçament confirmat inclou Almansa (Albacete) i arriba fins a Múrcia, a més de les províncies d’Alacant i València.',
     },
     {
       question: 'On està el contacte?',

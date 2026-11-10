@@ -1,6 +1,6 @@
 # Xaranga La Clandestina
 
-> Charanga y xaranga de Alcoy (Alcoi), en la provincia de Alicante. Especialidad: Moros y Cristianos. La zona que publica la web es Alcoi, la Comunitat Valenciana y alrededores. La web es informativa: no es una tienda ni un sistema de reservas.
+> Charanga y xaranga de Alcoy (Alcoi), en la provincia de Alicante. Especialidad: Moros y Cristianos. Se desplazan por la provincia de Alicante, la provincia de Valencia, Almansa (Albacete) y hasta Murcia. La web es informativa: no es una tienda ni un sistema de reservas.
 
 ## Qué es
 
@@ -26,9 +26,3 @@ Teléfono, WhatsApp e Instagram están en el bloque de contacto de cada página.
 - Teléfono: +34 663 401 455
 - WhatsApp: https://wa.me/34663401455
 - Instagram: https://www.instagram.com/xaranga_laclandestina/
-
-## Huecos sin confirmar
-
-- Pueblos y comparsas en los que ha actuado el grupo, aparte de la sede en Alcoy y la entrada festera de Cocentaina de la galería.
-- Si la zona incluye la ciudad de València, solo la provincia, o ambas, y el radio de desplazamiento.
-- Pueblos de alrededor, fuera de las provincias de Alicante y Valencia.

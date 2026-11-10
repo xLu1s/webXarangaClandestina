@@ -1,7 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { content } from '../src/data/content';
 import { landingH1, landings, type LandingId } from '../src/data/landings';
-import { pendingMarkers } from '../src/data/pending';
 import { indexablePaths, routes, type RouteId } from '../src/data/routes';
 import { absoluteUrl } from '../src/data/seo';
 import type { Locale } from '../src/data/site';
@@ -137,10 +136,11 @@ test('gallery videos are not requested on load', async ({ page }) => {
   await expect(logo).not.toHaveAttribute('fetchpriority', 'high');
 });
 
-test('confirmation markers are visible on the new pages', async ({ page }) => {
-  await page.goto(routes.moros.es);
-  await expect(page.getByText(pendingMarkers.playedTowns)).toBeVisible();
-  await page.goto(routes.zone.va);
-  await expect(page.getByText(pendingMarkers.valenciaReach)).toBeVisible();
-  await expect(page.getByText(pendingMarkers.surroundings)).toBeVisible();
+test('generated HTML does not contain por confirmar', async ({ request }) => {
+  const paths = [...indexablePaths(), '/llms.txt', '/sitemap-index.xml', '/sitemap.xml', '/esta-pagina-no-existe'];
+  for (const path of paths) {
+    const response = await request.get(path);
+    const html = (await response.text()).toLowerCase();
+    expect(html, path).not.toContain('por confirmar');
+  }
 });

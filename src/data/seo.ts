@@ -1,4 +1,3 @@
-import { pendingMarkers, type PendingMarker } from './pending';
 import { alternateRoutePath, localizedPath, type RouteId } from './routes';
 import { siteConfig, type Locale } from './site';
 
@@ -7,7 +6,7 @@ export const WEBSITE_ID = `${siteConfig.url}/#website`;
 
 export const absoluteUrl = (path: string) => new URL(path, siteConfig.url).href;
 
-/** Places already claimed by the site: Alcoi plus the Valencian Community. */
+/** Confirmed travel area: both Valencian provinces, Almansa and as far as Murcia. */
 export const areaServed = [
   { '@type': 'City', name: 'Alcoi', alternateName: 'Alcoy' },
   {
@@ -25,6 +24,12 @@ export const areaServed = [
     name: 'Comunitat Valenciana',
     alternateName: 'Comunidad Valenciana',
   },
+  {
+    '@type': 'City',
+    name: 'Almansa',
+    containedInPlace: { '@type': 'AdministrativeArea', name: 'Albacete' },
+  },
+  { '@type': 'City', name: 'Murcia' },
 ] as const;
 
 export const hreflangLinks = (route: RouteId) => {
@@ -156,5 +161,3 @@ export const pageCanonical = (route: RouteId, locale: Locale) =>
 
 export const pageAlternate = (route: RouteId, locale: Locale) =>
   absoluteUrl(alternateRoutePath(route, locale));
-
-export const expectedMarkers = Object.values(pendingMarkers) as PendingMarker[];
